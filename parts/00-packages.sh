@@ -13,7 +13,7 @@ apt-get install -y wireshark nmap tcpdump minicom net-tools tcptraceroute netcat
 apt-get install -y ansible docker.io docker-compose 
 
 # GUI stuff
-apt-get install -y gnome-tweak-tool inkscape gimp xpdf texlive-full
+apt-get install -y gnome-tweak-tool inkscape gimp xpdf
 
 # texlive-full takes 4.6GB
 # apt-get install -y texlive-full
