@@ -4,7 +4,7 @@ echo "This will install packages and configure this machine as a workstation."
 echo "Sleeping 5 seconds so you can cancel..."
 sleep 5
 
-sudo apt-get install -y git curl sudo
+sudo apt-get install -y git sudo
 tmpdir=$(mktemp -d)
 cd $tmpdir
 
