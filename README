@@ -2,3 +2,6 @@ Install a workstation from scratch by executing entry.sh.
 
 	curl -L -o entry.sh https://bit.ly/svaworkstation && chmod +x entry.sh && ./entry.sh
 
+For local testing:
+
+	vagrant up
