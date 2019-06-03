@@ -24,7 +24,8 @@ apt-get install -y gnome-tweak-tool inkscape gimp xpdf
 # texlive-full takes 4.6GB
 # apt-get install -y texlive-full
 
+# remastering CD
+apt-get install -y system-config-kickstart xorriso isolinux ovmf
+
 # other
 apt-get install -y openjdk-11-jdk gnupg2 vim-python-jedi apt-transport-https p7zip-full 
-
-
