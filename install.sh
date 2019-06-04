@@ -2,9 +2,18 @@
 
 shopt -s nullglob
 
+msgpref="Installing workstation:"
+
+showmsg() {
+	echo "### $msgpref $1"
+	which plymouth && plymouth display-message --text="$msgpref $1"
+}
+
 export DEBIAN_FRONTEND=noninteractive
 
+showmsg "apt-get update"
 apt-get update
+showmsg "apt-get install"
 apt-get install -y virt-what
 
 export INSIDEVM=yes
@@ -13,12 +22,14 @@ then
 	export INSIDEVM=no
 fi
 
-echo "=> Running inside VM: $INSIDEVM"
+showmsg "Running inside VM: $INSIDEVM"
 
 for i in parts/[0-9][0-9]*.sh;
 do
-	echo "# Running $i"
+	showmsg "Running $i"
 	./$i || (echo "!!!! ERROR executing $i" && exit 1)
 	echo
 	echo
 done
+
+showmsg "Done."
