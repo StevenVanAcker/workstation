@@ -14,4 +14,6 @@ cd ~/Projects.git
 git clone https://github.com/Shihira/gnome-extension-quicktoggler.git
 cd gnome-extension-quicktoggler/quicktoggler@shihira.github.com
 make install
+
+gnome-shell-extension-tool -e quicktoggler@shihira.github.com
 EOF
