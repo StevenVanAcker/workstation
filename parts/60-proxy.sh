@@ -5,7 +5,7 @@
 # default will allow proxy chaining to this corporate proxy when we want it.
 
 # setup tinyproxy on 127.0.0.1:8080
-apt-get install -y tinyproxy
+apt-get install -y tinyproxy socat
 
 cat > /etc/tinyproxy/tinyproxy.conf.vanilla <<EOF
 User tinyproxy
