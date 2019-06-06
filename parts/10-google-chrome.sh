@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# Install Google chrome browser
+
 dpkg -l google-chrome-stable && echo "==> Chrome already installed." && exit 0
 
 echo "==> Downloading and installing Google Chrome .deb package"

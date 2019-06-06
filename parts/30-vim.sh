@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+# Install vim with a reasonable vimrc, and enable python-jedi (Using vim as a
+# python IDE) for the regular user
+
 cat > /etc/vim/vimrc.local <<EOF
 set background=dark
 syntax on

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Install gnome tweak tool so we can install a gnome shell extension called
+# quicktoggler. This extension allows us to easily run scripts from the
+# gnome-shell, from a dropdown menu.
+
 user=$(getent passwd 1000 | cut -d: -f1)
 
 apt-get install -y gnome-tweak-tool git jq

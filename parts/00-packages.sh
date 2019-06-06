@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# Install a bunch of packages used on a workstation
+
 apt-get update
 apt-get upgrade -y
 

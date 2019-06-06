@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# Install vagrant with some extensions. Specifically, AWS integration.
+
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
 
 echo "==> Installing some dependencies"
