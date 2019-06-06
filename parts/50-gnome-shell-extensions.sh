@@ -2,11 +2,10 @@
 
 user=$(getent passwd 1000 | cut -d: -f1)
 
-apt-get install -y gnome-tweak-tool git
+apt-get install -y gnome-tweak-tool git jq
 
 # install quicktoggle as user
 su $user <<EOF
-rm -rf ~/.local/share/gnome-shell/extensions ~/Projects.git
 mkdir -p ~/.local/share/gnome-shell/extensions
 mkdir -p ~/Projects.git
 cd ~/Projects.git
@@ -34,3 +33,4 @@ EOF
 patch /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.xml $tmpfile
 glib-compile-schemas /usr/share/glib-2.0/schemas
 rm -f $tmpfile
+
