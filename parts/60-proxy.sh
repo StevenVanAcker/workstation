@@ -53,7 +53,7 @@ cat >>/etc/environment <<EOF
 http_proxy="http://127.0.0.1:8080/"
 https_proxy="http://127.0.0.1:8080/"
 ftp_proxy="http://127.0.0.1:8080/"
-no_proxy="localhost,127.0.0.1,::1
+no_proxy="localhost,127.0.0.1,::1"
 EOF
 
 # patch gnome-shell defaults to set proxy
