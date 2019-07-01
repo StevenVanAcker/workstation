@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 # Setup an HTTP/HTTPS proxy and route all traffic through it by default.  Some
 # corporate networks require the use of an HTTP proxy, and having one set up by

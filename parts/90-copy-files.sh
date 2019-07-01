@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 # Copy some files over the filesystem
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Change the timezone to Europe/Stockholm
 # This setting can be configured through preseeding as well, but that seems to

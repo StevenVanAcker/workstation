@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 # Install gnome tweak tool so we can install a gnome shell extension called
 # quicktoggler. This extension allows us to easily run scripts from the
