@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for d in ~/Projects.git/*;
+do
+	test -d $d && git -C $d status -s
+done
