@@ -29,5 +29,9 @@ apt-get install -y gnome-tweak-tool inkscape gimp xpdf
 # remastering CD
 apt-get install -y system-config-kickstart xorriso isolinux ovmf
 
+# mount samba shares
+apt-get install -y smbclient samba cifs-utils keyutils ldapscripts
+
 # other
-apt-get install -y openjdk-11-jdk gnupg2 vim-python-jedi apt-transport-https p7zip-full 
+apt-get install -y openjdk-11-jdk gnupg2 vim-python-jedi apt-transport-https p7zip-full exfat-fuse
+
