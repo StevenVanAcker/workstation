@@ -15,7 +15,7 @@ fi
 apt-get install -y git vim build-essential maven ipython ipython3 python-pip python3-pip vim-python-jedi
 
 # net tools
-apt-get install -y wireshark nmap tcpdump minicom net-tools tcptraceroute netcat telnet tcptrace curl
+apt-get install -y wireshark nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl
 
 # virtualization
 apt-get install -y ansible docker.io docker-compose 
