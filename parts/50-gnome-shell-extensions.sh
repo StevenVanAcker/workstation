@@ -4,12 +4,10 @@
 # quicktoggler. This extension allows us to easily run scripts from the
 # gnome-shell, from a dropdown menu.
 
-user=$(getent passwd 1000 | cut -d: -f1)
-
 apt-get install -y gnome-tweak-tool git jq
 
 # install quicktoggle as user
-su $user <<EOF
+su $MAINUSER <<EOF
 mkdir -p ~/.local/share/gnome-shell/extensions
 mkdir -p ~/Projects.git
 cd ~/Projects.git

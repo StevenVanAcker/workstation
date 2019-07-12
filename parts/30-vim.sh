@@ -48,7 +48,6 @@ augroup END
 let g:syntastic_python_python_exec = 'python'
 EOF
 
-user=$(getent passwd 1000 | cut -d: -f1)
-echo "==> Setting up the python vim IDE for $user"
-su -c "vim-addons install python-jedi" $user
+echo "==> Setting up the python vim IDE for $MAINUSER"
+su -c "vim-addons install python-jedi" $MAINUSER
 

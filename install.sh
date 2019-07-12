@@ -16,6 +16,10 @@ apt-get update
 showmsg "apt-get install"
 apt-get install -y virt-what
 
+
+export MAINUSER=$(getent passwd 1000 | cut -d: -f1)
+echo "Main user: $MAINUSER"
+
 export INSIDEVM=yes
 if [ "" = "$(virt-what|head)" ]; 
 then 
