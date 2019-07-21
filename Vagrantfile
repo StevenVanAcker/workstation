@@ -7,6 +7,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["modifyvm", :id, "--memory", "2048"]
 	 vb.gui = true
   end
-  config.vm.provision "shell", inline: "apt-get update && apt-get install -y ubuntu-desktop bash-completion"
+  config.vm.provision "shell", inline: "apt-get update && apt-get install -y ubuntu-desktop bash-completion git"
   config.vm.provision :reload
 end
