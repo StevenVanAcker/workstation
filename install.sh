@@ -6,7 +6,7 @@ msgpref="Installing workstation:"
 
 showmsg() {
 	echo "### $msgpref $1"
-	which plymouth && plymouth display-message --text="$msgpref $1"
+	which plymouth && plymouth display-message --text="$msgpref $1" || true
 }
 
 export DEBIAN_FRONTEND=noninteractive

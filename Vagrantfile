@@ -1,11 +1,12 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "bento/ubuntu-18.10"
+  config.vm.box = "bento/ubuntu-19.04"
   config.vm.provider "virtualbox" do |vb|
-     vb.cpus = 1
-     vb.customize ["modifyvm", :id, "--memory", "1024"]
+     vb.cpus = 2
+     vb.customize ["modifyvm", :id, "--memory", "2048"]
+	 vb.gui = true
   end
-  #config.vm.provision "shell", path: "setup.sh"
-  #config.vm.provision :reload
+  config.vm.provision "shell", inline: "apt-get update && apt-get install -y ubuntu-desktop bash-completion"
+  config.vm.provision :reload
 end
