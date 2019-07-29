@@ -33,3 +33,8 @@ Exec=/opt/ghidra/ghidraRun
 Terminal=false
 EOF
 
+
+mkdir -p /opt/ghidra/Ghidra/Processors/ARM/data/manuals
+curl -o /opt/ghidra/Ghidra/Processors/ARM/data/manuals/Armv7AR_errata.pdf https://www.cs.utexas.edu/~simon/378/resources/ARMv7-AR_TRM.pdf
+
+
