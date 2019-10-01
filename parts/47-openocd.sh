@@ -14,8 +14,3 @@ then
 	make install
 fi
 
-echo > /root/my-buspirate.conf <<EOF
-source [find interface/buspirate.cfg]
-buspirate_port /dev/ttyUSB0
-source [find target/imx25.cfg]
-EOF
