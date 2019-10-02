@@ -11,7 +11,6 @@ apt-get install -y \
 	weplab \
 	pyrit \
 	pyrit-opencl \
-	hashcat \
 	macchanger
 
 if [ "$install_bully" = "true" -a ! -e /opt/bully ];
