@@ -2,12 +2,12 @@
 
 install_john=true
 
-apt-get install -y hashcat mdm
+apt-get install -y hashcat
 
 if [ "$install_john" = "true" -a ! -e /opt/JohnTheRipper ];
 then
 	echo "==> Installing JohnTheRipper from https://github.com/magnumripper/JohnTheRipper.git"
-	apt-get -y install build-essential python-pip python3-pip zlib1g-dev libssl-dev git \
+	apt-get -y install build-essential python-pip python3-pip zlib1g-dev libssl-dev git mdm \
 		yasm libgmp-dev libpcap-dev pkg-config libbz2-dev \
 		nvidia-opencl-dev \
 		libcompress-raw-lzma-perl python-pyasn1 python3-pyasn1 \
