@@ -2,7 +2,7 @@
 
 install_john=true
 
-apt-get install -y hashcat
+apt-get install -y hashcat mdm
 
 if [ "$install_john" = "true" -a ! -e /opt/JohnTheRipper ];
 then
@@ -25,3 +25,7 @@ then
 	echo 'export PATH="/opt/JohnTheRipper/run/:$PATH"' >> /etc/bash.bashrc
 fi
 
+
+# https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+# https://gist.github.com/scottlinux/9a3b11257ac575e4f71de811322ce6b3
+# https://www.hack3r.com/forum-topic/wikipedia-wordlist
