@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-# Install pwntools
+# pre-requisites
+apt-get install -y binutils-arm-linux-gnueabi
 
+# Install pwntools
 pip install pwn
 
