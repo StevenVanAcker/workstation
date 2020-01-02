@@ -11,7 +11,7 @@ then
 		yasm libgmp-dev libpcap-dev pkg-config libbz2-dev \
 		nvidia-opencl-dev \
 		libcompress-raw-lzma-perl python-pyasn1 python3-pyasn1 \
-		python-protobuf python3-protobuf python-dpkt python3-dpkt \
+		python-protobuf python3-protobuf python3-dpkt \
 		libnet-pcap-perl libnetpacket-perl libnet-radius-perl \
 		python-ldap3 python3-ldap3
 	pip install plyvel parsimonious pysap
