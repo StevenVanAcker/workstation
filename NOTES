@@ -1,0 +1,5 @@
+if gnome is showing the homedir as the Desktop, the desktop is flickering and changing any file in the homedir
+goes accompanied by a terrible slowdown, this may be due to either:
+- ~/Desktop being missing or
+- ~/.config/user-dirs.dirs listing XDG_DESKTOP_DIR="$HOME/" instead of XDG_DESKTOP_DIR="$HOME/Desktop"
+
