@@ -47,3 +47,4 @@ then
 	make install
 fi
 
+# airmon-ng stop wlp2s0mon
