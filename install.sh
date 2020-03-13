@@ -7,18 +7,18 @@ export msgpref="Installing workstation:"
 mkdir -p /etc/xxx
 touch /etc/xxx/a1
 
-if [ -e /etc/installprofile ];
+if [ -e /etc/installationprofile ];
 then
-	export msgpref="Installing workstation ($prof?):"
-	prof=$(cat /etc/installprofile);
+	msgpref="Installing workstation ($prof?):"
+	prof=$(cat /etc/installationprofile);
 	touch /etc/xxx/a2
 	if [ -e "profiles/$prof" ];
 	then
 		touch /etc/xxx/a3
 		set -a
 		. profiles/$prof
-		msgpref="Installing workstation ($prof):"
 		set +a
+		msgpref="Installing workstation ($prof):"
 		touch /etc/xxx/a4
 	fi
 fi
