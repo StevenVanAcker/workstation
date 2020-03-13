@@ -2,17 +2,18 @@
 
 shopt -s nullglob
 
-msgpref="Installing workstation:"
+export msgpref="Installing workstation:"
 
 if [ -e /etc/installprofile ];
 then
+	export msgpref="Installing workstation ($prof?):"
 	prof=$(cat /etc/installprofile);
 	if [ -e "profiles/$prof" ];
 	then
 		set -a
 		. profiles/$prof
-		set +a
 		msgpref="Installing workstation ($prof):"
+		set +a
 	fi
 fi
 
