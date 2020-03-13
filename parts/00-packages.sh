@@ -15,7 +15,7 @@ fi
 apt-get install -y git vim build-essential maven ipython ipython3 python-pip python3-pip vim-python-jedi gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386
 
 # net tools
-apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python-scapy python3-scapy traceroute hping3
+apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python-scapy python3-scapy traceroute hping3 lynx
 
 # virtualization
 apt-get install -y ansible docker.io docker-compose dosbox

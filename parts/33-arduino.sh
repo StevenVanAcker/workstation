@@ -8,7 +8,7 @@ then
 	exit 0
 fi
 
-apt-get install -y lynx curl avr-libc avrdude gcc-avr binutils-avr
+apt-get install -y avr-libc avrdude gcc-avr binutils-avr
 
 tmpfile=$(tempfile -s tar.xz)
 
