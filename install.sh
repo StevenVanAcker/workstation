@@ -4,26 +4,17 @@ shopt -s nullglob
 
 export msgpref="Installing workstation:"
 
-mkdir -p /etc/xxx
-touch /etc/xxx/a1
-
 if [ -e /etc/installationprofile ];
 then
-	msgpref="Installing workstation ($prof?):"
 	prof=$(cat /etc/installationprofile);
-	touch /etc/xxx/a2
 	if [ -e "profiles/$prof" ];
 	then
-		touch /etc/xxx/a3
 		set -a
 		. profiles/$prof
 		set +a
 		msgpref="Installing workstation ($prof):"
-		touch /etc/xxx/a4
 	fi
 fi
-
-touch /etc/xxx/a5
 
 showmsg() {
 	echo "### $msgpref $1"
