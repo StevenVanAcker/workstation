@@ -1,5 +1,9 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_GHIDRA" = "no" ];
+then
+    exit 0
+fi
 
 if [ -e /opt/ghidra ];
 then

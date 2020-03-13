@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_GOOGLE_CHROME" = "no" ];
+then
+    exit 0
+fi
+
+
 # Install Google chrome browser
 
 dpkg -l google-chrome-stable && echo "==> Chrome already installed." && exit 0

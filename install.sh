@@ -4,6 +4,18 @@ shopt -s nullglob
 
 msgpref="Installing workstation:"
 
+if [ -e /etc/installprofile ];
+then
+	prof=$(cat /etc/installprofile);
+	if [ -e "profiles/$prof" ];
+	then
+		set -a
+		. profiles/$prof
+		set +a
+		msgpref="Installing workstation ($prof):"
+	fi
+fi
+
 showmsg() {
 	echo "### $msgpref $1"
 	which plymouth && plymouth display-message --text="$msgpref $1" || true

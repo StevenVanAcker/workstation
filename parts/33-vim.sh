@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_VIM" = "no" ];
+then
+    exit 0
+fi
+
+
 # Install vim with a reasonable vimrc, and enable python-jedi (Using vim as a
 # python IDE) for the regular user
 

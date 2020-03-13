@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_PROXY" = "no" ];
+then
+    exit 0
+fi
+
+
 # Setup an HTTP/HTTPS proxy and route all traffic through it by default.  Some
 # corporate networks require the use of an HTTP proxy, and having one set up by
 # default will allow proxy chaining to this corporate proxy when we want it.

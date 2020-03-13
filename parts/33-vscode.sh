@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_VSCODE" = "no" ];
+then
+    exit 0
+fi
+
+
 tf=$(tempfile)
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $tf
 install -o root -g root -m 644 $tf /etc/apt/trusted.gpg.d/microsoft.gpg

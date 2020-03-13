@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_GNOMESHELL_EXTENSIONS" = "no" ];
+then
+    exit 0
+fi
+
 # Install gnome tweak tool so we can install a gnome shell extension called
 # quicktoggler. This extension allows us to easily run scripts from the
 # gnome-shell, from a dropdown menu.

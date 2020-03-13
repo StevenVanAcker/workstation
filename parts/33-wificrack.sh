@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_WIFICRACK" = "no" ];
+then
+    exit 0
+fi
+
+
 install_bully=true
 install_hcxdumptool=true
 install_hcxtools=true

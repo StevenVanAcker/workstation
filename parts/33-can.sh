@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_CAN" = "no" ];
+then
+    exit 0
+fi
+
 apt-get install -y can-utils
 
 # FIXME: switch to netplan

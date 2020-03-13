@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_PASSWORDCRACK" = "no" ];
+then
+    exit 0
+fi
+
 install_john=true
 
 apt-get install -y hashcat

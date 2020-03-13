@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_WIRESHARK" = "no" ];
+then
+    exit 0
+fi
+
+
 # Install wireshark
 
 export DEBIAN_FRONTEND=noninteractive

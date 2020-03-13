@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_MINICOM" = "no" ];
+then
+    exit 0
+fi
+
+
 apt-get install -y minicom
 
 cat > /etc/minicom/minirc.dfl <<EOF

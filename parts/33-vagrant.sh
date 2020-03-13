@@ -1,5 +1,11 @@
 #!/bin/sh -e
 
+if [ "$INSTALL_VAGRANT" = "no" ];
+then
+    exit 0
+fi
+
+
 # Install vagrant with some extensions. Specifically, AWS integration.
 
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
