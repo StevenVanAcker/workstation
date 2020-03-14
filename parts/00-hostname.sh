@@ -2,15 +2,15 @@
 
 # Set the hostname
 
-if [ "$INSTALLATION_HOSTNAME" = "" ];
+if [ "$INSTALL_HOSTNAME" = "" ];
 then
-	if [ "$INSTALLATION_PROFILE" = "" ];
+	if [ "$INSTALL_PROFILE" = "" ];
 	then
 		exit 1
 	else
-		hostnamectl set-hostname "$INSTALLATION_PROFILE"
+		hostnamectl set-hostname "$INSTALL_PROFILE"
 	fi
 else
-	hostnamectl set-hostname "$INSTALLATION_HOSTNAME"
+	hostnamectl set-hostname "$INSTALL_HOSTNAME"
 fi
 
