@@ -2,5 +2,5 @@
 
 for group in docker kvm;
 do
-	adduser $MAINUSER $group
+	getent groups $group > /dev/null && adduser $MAINUSER $group
 done
