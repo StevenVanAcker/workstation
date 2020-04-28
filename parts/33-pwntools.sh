@@ -10,7 +10,7 @@ fi
 apt-get install -y binutils-arm-linux-gnueabi
 
 # Install pwntools
-pip install pwn
+pip3 install pwn
 
 # install foresight
 pip3 install git+https://github.com/ALSchwalm/foresight

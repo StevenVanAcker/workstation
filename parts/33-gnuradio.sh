@@ -7,4 +7,5 @@ fi
 
 
 apt-get install -y gnuradio gr-osmosdr
+# WARNING: uhd-host uses python2
 

@@ -12,22 +12,23 @@ then
 fi
 
 # devel tools
-apt-get install -y git vim build-essential maven ipython ipython3 python-pip python3-pip vim-python-jedi gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386
+apt-get install -y git vim build-essential maven ipython3 python3-pip vim-python-jedi gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386
 
 # net tools
-apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python-scapy python3-scapy traceroute hping3 lynx
+apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python3-scapy traceroute hping3 lynx
 
 # virtualization
 apt-get install -y ansible docker.io docker-compose dosbox
 
 # GUI stuff
-apt-get install -y gnome-tweak-tool inkscape gimp xpdf
+apt-get install -y gnome-tweak-tool inkscape gimp 
+# WARNING: inkscape uses python2
 
 # texlive-full takes 4.6GB
 # apt-get install -y texlive-full
 
 # remastering CD
-apt-get install -y system-config-kickstart xorriso isolinux ovmf
+apt-get install -y xorriso isolinux ovmf
 
 # mount samba shares
 apt-get install -y smbclient samba cifs-utils keyutils ldapscripts
@@ -45,5 +46,4 @@ piplist="	xortool \
 			websocket-client \
 			"
 
-pip install $piplist
 pip3 install $piplist

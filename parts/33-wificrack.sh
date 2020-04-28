@@ -15,8 +15,6 @@ apt-get install -y \
 	wifite \
 	reaver \
 	weplab \
-	pyrit \
-	pyrit-opencl \
 	macchanger \
 	cowpatty
 
