@@ -11,11 +11,12 @@ fi
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
 
 echo "==> Installing some dependencies"
-apt-get install -y lynx qemu libvirt-daemon libvirt-clients ebtables dnsmasq libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt
+apt-get install -y curl qemu libvirt-daemon libvirt-clients ebtables dnsmasq libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt
 
 echo "==> Downloading and installing vagrant"
 tmpdir=$(mktemp -d)
-url=$(lynx -dump https://www.vagrantup.com/downloads.html|grep x86_64.deb | awk '{print $2}')
+url=$(curl -s https://www.vagrantup.com/downloads.html | grep -oP "http[^\"]+i686.deb")
+
 curl -o $tmpdir/vagrant.deb "$url"
 dpkg -i $tmpdir/vagrant.deb
 rm -rf $tmpdir
@@ -28,7 +29,7 @@ apt-get build-dep -y vagrant ruby-libvirt
 echo "==> Installing vagrant plugins"
 # vagrant plugin install vagrant-libvirt
 vagrant plugin install vagrant-host-shell
-vagrant plugin install vagrant-aws
+#vagrant plugin install vagrant-aws # broken on 2020-06-09 because of fricking ruby
 vagrant plugin install vagrant-winrm
 
 cat > /dev/null <<EOF
