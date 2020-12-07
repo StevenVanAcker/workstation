@@ -28,7 +28,7 @@ apt-get install -y gnome-tweak-tool inkscape gimp
 # apt-get install -y texlive-full
 
 # remastering CD
-apt-get install -y xorriso isolinux ovmf
+apt-get install -y xorriso isolinux ovmf syslinux-utils
 
 # mount samba shares
 apt-get install -y smbclient samba cifs-utils keyutils ldapscripts
