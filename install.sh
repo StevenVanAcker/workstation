@@ -74,6 +74,7 @@ PartsFromSelection() {
 }
 
 selparts=$(PartsFromSelection)
+showmsg "Selected optional packages: $selparts"
 
 for i in parts/pre--*.sh; do RunPart $i; done
 for i in $selparts; do RunPart $i; done
