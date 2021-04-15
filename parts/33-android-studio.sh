@@ -15,7 +15,7 @@ then
 	exit 0
 fi
 
-tmpfile=$(tempfile -s tar.gz)
+tmpfile=$(mktemp --suffix .tar.gz)
 
 echo "==> Checking for latest Android Studio IDE version"
 url=$(lynx -dump "$base" | grep -oP "(https?://.*-linux.tar.*)$")

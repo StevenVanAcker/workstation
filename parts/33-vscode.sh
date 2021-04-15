@@ -6,7 +6,7 @@ then
 fi
 
 
-tf=$(tempfile)
+tf=$(mktemp)
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > $tf
 install -o root -g root -m 644 $tf /etc/apt/trusted.gpg.d/microsoft.gpg
 rm -f $tf

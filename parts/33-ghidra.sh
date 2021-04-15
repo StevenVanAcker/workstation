@@ -12,9 +12,9 @@ then
 fi
 
 base="https://ghidra-sre.org"
-tmpfile=$(tempfile -s zip)
+tmpfile=$(mktemp --suffix .zip)
 
-relpath=$(curl -s "$base" |grep -oP '"[^"]*zip"'|tr -d '"')
+relpath=$(curl -s "$base" |grep -oP '"[^"]*zip"'|tr -d '"'|head -1|awk '{print $1}')
 abspath="$base/$relpath"
 
 curl -o $tmpfile "$abspath"
