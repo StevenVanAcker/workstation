@@ -6,6 +6,8 @@ export DEBIAN_FRONTEND=noninteractive
 export MAINUSER=$(id -nu 1000)
 echo "Main user: $MAINUSER"
 export PROFILE=$(cat /etc/installationprofile 2> /dev/null|| echo default);
+export INSTALL_PROFILE=$PROFILE
+
 msgpref="Installing workstation ($PROFILE)"
 
 showmsg() {
@@ -71,8 +73,10 @@ PartsFromSelection() {
 	done
 }
 
+selparts=$(PartsFromSelection)
+
 for i in parts/pre--*.sh; do RunPart $i; done
-for i in $(PartsFromSelection); do RunPart $i; done
+for i in $selparts; do RunPart $i; done
 for i in parts/post--*.sh; do RunPart $i; done
 
 showmsg "Done."
