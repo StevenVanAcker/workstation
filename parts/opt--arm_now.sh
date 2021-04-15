@@ -1,9 +1,5 @@
 #!/bin/sh -e
-
-if [ "$INSTALL_ARM_NOW" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: QEMU-powered tool to create instant VMs for running binaries
 
 
 apt-get install -y qemu-system e2tools

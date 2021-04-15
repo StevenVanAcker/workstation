@@ -1,12 +1,7 @@
 #!/bin/sh -e
+# DESCRIPTION: Arduino IDE
 
 base="https://www.arduino.cc/en/Main/Software"
-
-if [ "$INSTALL_ARDUINO" = "no" ];
-then
-    exit 0
-fi
-
 
 if [ -e /opt/arduino ];
 then

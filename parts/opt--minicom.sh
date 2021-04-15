@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_MINICOM" = "no" ];
-then
-    exit 0
-fi
-
+# DESCRIPTION: Minicom text-based modem control and terminal emulator
 
 apt-get install -y minicom
 

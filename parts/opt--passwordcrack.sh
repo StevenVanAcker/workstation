@@ -1,9 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_PASSWORDCRACK" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: John The Ripper password cracking tool
 
 install_john=true
 

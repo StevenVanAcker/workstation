@@ -1,9 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_VAGRANT" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: Hashicorp Vagrant VM deployment environment
 
 
 # Install vagrant with some extensions. Specifically, AWS integration.

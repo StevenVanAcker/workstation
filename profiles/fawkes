@@ -1,4 +1,5 @@
-INSTALL_GNOMESHELL_EXTENSIONS=no
-INSTALL_ARDUINO=no
-
-INSTALL_HOSTNAME=fawkes
+ghidra
+gnuradio
+google-chrome
+pwntools
+vscode

@@ -1,9 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_WIFICRACK" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: several WiFi cracking tools
 
 
 install_bully=true

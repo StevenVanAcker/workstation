@@ -1,9 +1,5 @@
 #!/bin/sh -e
-
-if [ "$INSTALL_CAN" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: CAN tools
 
 apt-get install -y can-utils
 

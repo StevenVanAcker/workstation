@@ -1,9 +1,8 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_GHIDRA" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: Ghidra reverse engineering tool from NSA
+
+
 
 if [ -e /opt/ghidra ];
 then

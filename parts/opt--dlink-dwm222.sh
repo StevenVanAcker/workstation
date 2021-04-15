@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
-
-if [ "$INSTALL_DLINK_DWM222" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: D-Link DWM-222 4G LTE USB Adapter tools and drivers
 
 # Setting up tools to use D-Link DWM-222 4G LTE USB Adapter
 # http://blog.petrilopia.net/linux/raspberry-pi-and-d-link-dwm-222/

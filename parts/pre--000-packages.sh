@@ -9,7 +9,7 @@ apt-get upgrade -y
 apt-get install -y git vim build-essential ipython3 python3-pip gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386
 
 # net tools
-apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python3-scapy traceroute hping3 lynx
+apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark
 
 # virtualization
 apt-get install -y docker.io docker-compose dosbox

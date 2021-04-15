@@ -1,10 +1,7 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_OPENOCD" = "no" ];
-then
-    exit 0
-fi
 
+# DESCRIPTION: OpenOCD Open On-Chip Debugger to interface with JTAG
 
 # Install OpenOCD according to https://research.kudelskisecurity.com/2014/05/01/jtag-debugging-made-easy-with-bus-pirate-and-openocd/
 apt-get install -y libtool autoconf texinfo libusb-dev libftdi-dev libusb-1.0-0-dev

@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_PWNTOOLS" = "no" ];
-then
-    exit 0
-fi
-
+# DESCRIPTION: Gallopsled's pwntools python library
 
 # pre-requisites
 apt-get install -y binutils-arm-linux-gnueabi

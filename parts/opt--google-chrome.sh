@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_GOOGLE_CHROME" = "no" ];
-then
-    exit 0
-fi
-
+# DESCRIPTION: Google Chrome browser
 
 # Install Google chrome browser
 

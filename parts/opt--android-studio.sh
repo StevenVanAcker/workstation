@@ -1,9 +1,5 @@
 #!/bin/sh -e
-
-if [ "$INSTALL_ANDROID_STUDIO" = "no" ];
-then
-	exit 0
-fi
+# DESCRIPTION: Android Studio with ADB
 
 base="https://developer.android.com/studio"
 

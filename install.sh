@@ -2,40 +2,77 @@
 
 shopt -s nullglob
 
-msgpref="Installing workstation:"
-
-if [ -e /etc/installationprofile ];
-then
-	prof=$(cat /etc/installationprofile);
-	export INSTALL_PROFILE=$prof
-	if [ -e "profiles/$prof" ];
-	then
-		set -a
-		. profiles/$prof
-		set +a
-		msgpref="Installing workstation ($prof):"
-	fi
-fi
+export DEBIAN_FRONTEND=noninteractive
+export MAINUSER=$(id -nu 1000)
+echo "Main user: $MAINUSER"
+export PROFILE=$(cat /etc/installationprofile 2> /dev/null|| echo default);
+msgpref="Installing workstation ($PROFILE)"
 
 showmsg() {
 	echo "### $msgpref $1"
 	which plymouth > /dev/null && plymouth display-message --text="$msgpref $1" || true
 }
 
-export DEBIAN_FRONTEND=noninteractive
+error() {
+	echo "ERROR: $1" 1>&2
+	kill $$
+	exit 1
+}
 
-showmsg "apt-get update"
-apt-get update
+RunPart() {
+	fn=$1
+	showmsg "Running $fn"
+	./$fn || error "Error running $fn"
+}
 
-export MAINUSER=$(id -nu 1000)
-echo "Main user: $MAINUSER"
+IsSelected() {
+	if echo "$2" | tr " " "\n" | grep -q "$1";
+	then
+		echo TRUE
+	else
+		echo FALSE
+	fi
+}
 
-for i in parts/[0-9][0-9]*.sh;
-do
-	showmsg "Running $i"
-	./$i || (echo "!!!! ERROR executing $i" && exit 1)
-	echo
-	echo
-done
+GetSelection() {
+	if [ -e "profiles/$PROFILE" ];
+	then
+		# if the profile exists, load the selection from file
+		# after removing any comments
+		preselection=$(cat profiles/$PROFILE | sed 's:#.*::')
+	else
+		preselection=""
+	fi
+
+	# prompt the user with zenity, with preselection loaded
+	(
+	for fn in parts/opt--*.sh;
+	do
+		p=${fn%.sh}
+		p=${p##parts/opt--}
+		desc=$(grep "^#.*DESCRIPTION:" $fn |head -1| sed 's,^.*DESCRIPTION:,,')
+		echo $(IsSelected "$p" "$preselection")
+		echo $p
+		echo $desc
+	done
+	) | zenity --list --separator=" " --checklist --column Install --column Name --column Description
+}
+
+PartsFromSelection() {
+	for p in $(GetSelection);
+	do
+		fn="parts/opt--$p.sh"
+		if [ -x $fn ];
+		then
+			echo $fn
+		else
+			error "Unknown optional part '$p'"
+		fi
+	done
+}
+
+for i in parts/pre--*.sh; do RunPart $i; done
+for i in $(PartsFromSelection); do RunPart $i; done
+for i in parts/post--*.sh; do RunPart $i; done
 
 showmsg "Done."

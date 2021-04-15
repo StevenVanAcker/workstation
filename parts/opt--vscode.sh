@@ -1,9 +1,6 @@
 #!/bin/sh -e
 
-if [ "$INSTALL_VSCODE" = "no" ];
-then
-    exit 0
-fi
+# DESCRIPTION: Microsoft Visual Studio Code IDE
 
 
 tf=$(mktemp)
