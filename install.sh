@@ -26,20 +26,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 showmsg "apt-get update"
 apt-get update
-showmsg "apt-get install"
-apt-get install -y virt-what
 
-
-export MAINUSER=$(getent passwd 1000 | cut -d: -f1)
+export MAINUSER=$(id -nu 1000)
 echo "Main user: $MAINUSER"
-
-export INSIDEVM=yes
-if [ "" = "$(virt-what|head)" ]; 
-then 
-	export INSIDEVM=no
-fi
-
-showmsg "Running inside VM: $INSIDEVM"
 
 for i in parts/[0-9][0-9]*.sh;
 do
