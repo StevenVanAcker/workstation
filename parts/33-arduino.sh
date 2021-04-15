@@ -23,7 +23,7 @@ urlpath=$(lynx -dump "$base" | grep -oP "https?://.*download.*\?f=(/arduino-[012
 url="https://downloads.arduino.cc$urlpath"
 
 echo "==> Downloading latest Arduino IDE to $tmpfile from $url"
-curl -o $tmpfile "$url"
+curl -Lo $tmpfile "$url"
 
 echo "==> Unpacking..."
 cd /opt

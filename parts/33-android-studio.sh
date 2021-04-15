@@ -21,7 +21,7 @@ echo "==> Checking for latest Android Studio IDE version"
 url=$(lynx -dump "$base" | grep -oP "(https?://.*-linux.tar.*)$")
 
 echo "==> Downloading latest Android Studio IDE to $tmpfile from $url"
-curl -L -o $tmpfile "$url"
+curl -Lo $tmpfile "$url"
 
 echo "==> Unpacking..."
 cd /opt

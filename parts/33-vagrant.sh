@@ -15,9 +15,9 @@ apt-get install -y curl qemu libvirt-daemon libvirt-clients ebtables dnsmasq lib
 
 echo "==> Downloading and installing vagrant"
 tmpdir=$(mktemp -d)
-url=$(curl -s https://www.vagrantup.com/downloads.html | grep -oP "http[^\"]+i686.deb")
+url=$(curl -Ls https://www.vagrantup.com/downloads.html | grep -oP "http[^\"]+i686.deb")
 
-curl -o $tmpdir/vagrant.deb "$url"
+curl -Lo $tmpdir/vagrant.deb "$url"
 dpkg -i $tmpdir/vagrant.deb
 rm -rf $tmpdir
 

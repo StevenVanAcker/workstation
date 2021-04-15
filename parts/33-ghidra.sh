@@ -14,10 +14,10 @@ fi
 base="https://ghidra-sre.org"
 tmpfile=$(mktemp --suffix .zip)
 
-relpath=$(curl -s "$base" |grep -oP '"[^"]*zip"'|tr -d '"'|head -1|awk '{print $1}')
+relpath=$(curl -Ls "$base" |grep -oP '"[^"]*zip"'|tr -d '"'|head -1|awk '{print $1}')
 abspath="$base/$relpath"
 
-curl -o $tmpfile "$abspath"
+curl -Lo $tmpfile "$abspath"
 
 cd /opt
 unzip $tmpfile
@@ -39,6 +39,6 @@ EOF
 
 
 mkdir -p /opt/ghidra/Ghidra/Processors/ARM/data/manuals
-curl -o /opt/ghidra/Ghidra/Processors/ARM/data/manuals/Armv7AR_errata.pdf https://www.cs.utexas.edu/~simon/378/resources/ARMv7-AR_TRM.pdf
+curl -Lo /opt/ghidra/Ghidra/Processors/ARM/data/manuals/Armv7AR_errata.pdf https://www.cs.utexas.edu/~simon/378/resources/ARMv7-AR_TRM.pdf
 
 
