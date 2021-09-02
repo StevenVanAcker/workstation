@@ -10,12 +10,11 @@ then
 	exit 0
 fi
 
-base="https://ghidra-sre.org"
+base="https://github.com/NationalSecurityAgency/ghidra/releases"
 tmpfile=$(mktemp --suffix .zip)
+abspath=$(lynx --dump "$base" |grep -oP 'https://.*.zip$'|head -1)
 
-relpath=$(curl -Ls "$base" |grep -oP '"[^"]*zip"'|tr -d '"'|head -1|awk '{print $1}')
-abspath="$base/$relpath"
-
+echo "Downloading from $abspath"
 curl -Lo $tmpfile "$abspath"
 
 cd /opt
