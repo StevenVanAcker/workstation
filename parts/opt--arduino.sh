@@ -14,13 +14,11 @@ apt-get install -y avr-libc avrdude gcc-avr binutils-avr lynx curl
 tmpfile=$(mktemp --suffix .tar.xz)
 
 echo "==> Checking for latest Arduino IDE version"
-urlpath=$(lynx -dump "$base" | grep -oP "https?://.*download.*\?f=(/arduino-[0123456789\.]+-linux64.tar.*)$" | sed 's:.*?f=::')
-url="https://downloads.arduino.cc$urlpath"
+url=$(lynx -dump "$base" | grep -oP "https?://.*download.*(/arduino-[0123456789\.]+-linux64.tar.*)$")
 
 echo "==> Downloading latest Arduino IDE to $tmpfile from $url"
 
 curl -Lo $tmpfile "$url"
-
 echo "==> Unpacking..."
 cd /opt
 tar -xf $tmpfile
