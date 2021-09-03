@@ -34,6 +34,7 @@ RunPart() {
 	fn=$1
 	showmsg "Running $fn"
 	./$fn || localerror "$fn"
+	showmsg "Done running $fn"
 }
 
 IsSelected() {
