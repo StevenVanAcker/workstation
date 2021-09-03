@@ -10,6 +10,8 @@ then
 	exit 0
 fi
 
+apt-get install -y unzip
+
 base="https://github.com/NationalSecurityAgency/ghidra/releases"
 tmpfile=$(mktemp --suffix .zip)
 abspath=$(lynx --dump "$base" |grep -oP 'https://.*.zip$'|head -1)

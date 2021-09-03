@@ -7,21 +7,29 @@
 
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
 
-echo "==> Installing some dependencies"
-apt-get install -y curl qemu libvirt-daemon libvirt-clients ebtables dnsmasq libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt
+apt-get install -y gnupg lsb-release software-properties-common
+curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+apt-add-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+apt-get update && sudo apt-get install -y vagrant
 
-echo "==> Downloading and installing vagrant"
-tmpdir=$(mktemp -d)
-url=$(curl -Ls https://www.vagrantup.com/downloads.html | grep -oP "http[^\"]+i686.deb")
+if false;
+then
+	echo "==> Installing some dependencies"
+	apt-get install -y curl qemu libvirt-daemon libvirt-clients ebtables dnsmasq libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev ruby-libvirt
 
-curl -Lo $tmpdir/vagrant.deb "$url"
-dpkg -i $tmpdir/vagrant.deb
-rm -rf $tmpdir
+	echo "==> Downloading and installing vagrant"
+	tmpdir=$(mktemp -d)
+	url=$(curl -Ls https://www.vagrantup.com/downloads.html | grep -oP "http[^\"]+i686.deb")
 
-echo "==> Installing build dependencies"
-sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
-apt-get update
-apt-get build-dep -y vagrant ruby-libvirt
+	curl -Lo $tmpdir/vagrant.deb "$url"
+	dpkg -i $tmpdir/vagrant.deb
+	rm -rf $tmpdir
+
+	echo "==> Installing build dependencies"
+	sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
+	apt-get update
+	apt-get build-dep -y vagrant ruby-libvirt
+fi
 
 echo "==> Installing vagrant plugins"
 # vagrant plugin install vagrant-libvirt

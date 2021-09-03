@@ -4,6 +4,8 @@
 
 # Install Google chrome browser
 
+export PAGER=cat
+
 dpkg -l google-chrome-stable && echo "==> Chrome already installed." && exit 0
 
 echo "==> Downloading and installing Google Chrome .deb package"
