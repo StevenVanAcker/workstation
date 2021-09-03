@@ -3,11 +3,14 @@ on: [push]
 jobs:
   main:
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            ubuntuversion: [21.04, 20.04]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Build container
-        run: make -C test build
-      - name: Run container
-        run: make -C test run
+      - name: Build container on ${{matrix.ubuntuversion}}
+        run: UBUNTUVERSION=${{matrix.ubuntuversion}} make -C test build
+      - name: Install packages on ${{matrix.ubuntuversion}}
+        run: UBUNTUVERSION=${{matrix.ubuntuversion}} make -C test run
 

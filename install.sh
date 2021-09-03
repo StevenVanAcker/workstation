@@ -95,6 +95,7 @@ for i in parts/post--*.sh; do RunPart $i; done
 if [ ! -z "$localerrors" ];
 then
 	echo "ERRORS REPORTED for $localerrors"
+	exit 1
 fi
 
 showmsg "Done."

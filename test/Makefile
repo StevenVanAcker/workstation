@@ -1,7 +1,7 @@
 cn := workstation-test-env
 
 build:
-	docker build -t $(cn) .
+	docker build --build-arg UBUNTUVERSION=$${UBUNTUVERSION:-latest} -t $(cn) .
 
 run:
 	docker run --rm $(cn) /selftest.sh
