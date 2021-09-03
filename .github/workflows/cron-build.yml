@@ -1,11 +1,13 @@
 name: Cron Build
 on: [push]
 jobs:
-  build-2104:
+  main:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Build container
         run: make -C test build
+      - name: Run container
+        run: make -C test run
 
