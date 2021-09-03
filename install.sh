@@ -10,21 +10,30 @@ export INSTALL_PROFILE=$PROFILE
 
 msgpref="Installing workstation ($PROFILE)"
 
+localerrors=""
+
 showmsg() {
 	echo "### $msgpref $1"
 	which plymouth > /dev/null && plymouth display-message --text="$msgpref $1" || true
 }
 
-error() {
+finalerror() {
 	echo "ERROR: $1" 1>&2
 	kill $$
 	exit 1
 }
 
+localerror() {
+	echo
+	echo "LOCAL ERROR RUNNING $1" 1>&2
+	echo
+	localerrors="$localerrors $1"
+}
+
 RunPart() {
 	fn=$1
 	showmsg "Running $fn"
-	./$fn || error "Error running $fn"
+	./$fn || localerror "$fn"
 }
 
 IsSelected() {
@@ -70,7 +79,7 @@ PartsFromSelection() {
 		then
 			echo $fn
 		else
-			error "Unknown optional part '$p'"
+			finalerror "Unknown optional part '$p'"
 		fi
 	done
 }
@@ -81,5 +90,10 @@ showmsg "Selected optional packages: $selparts"
 for i in parts/pre--*.sh; do RunPart $i; done
 for i in $selparts; do RunPart $i; done
 for i in parts/post--*.sh; do RunPart $i; done
+
+if [ ! -z "$localerrors" ];
+then
+	echo "ERRORS REPORTED for $localerrors"
+fi
 
 showmsg "Done."
