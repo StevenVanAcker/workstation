@@ -5,4 +5,4 @@
 cat > /etc/docker/daemon.json <<EOF
 { "dns": ["8.8.8.8"] }
 EOF
-systemctl restart docker
+systemctl restart docker || echo "Failed but that's ok..."

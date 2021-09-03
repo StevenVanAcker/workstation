@@ -18,3 +18,12 @@ echo "Invoking fake hostnamectl \$*"
 exit 0
 EOF
 chmod +x /usr/sbin/hostnamectl
+
+
+cat > /usr/sbin/timedatectl <<EOF
+#!/bin/sh -e
+
+echo "Invoking fake timedatectl \$*"
+exit 0
+EOF
+chmod +x /usr/sbin/timedatectl
