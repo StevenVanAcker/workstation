@@ -4,7 +4,7 @@ build:
 	docker build -t $(cn) .
 
 run:
-	docker run --rm -ti $(cn) /selftest.sh
+	docker run --rm $(cn) /selftest.sh
 
 debug:
 	docker run --rm -ti -v $$PWD/..:/data $(cn) /bin/bash
