@@ -9,21 +9,37 @@ apt-get install -y vim
 # default user
 adduser -u 1000 --gecos "Steven Van Acker" --disabled-password deepstar
 
-# create hostnamectl
-
-cat > /usr/sbin/hostnamectl <<EOF
+# create some mock commands
+for cmd in hostnamectl timedatectl dconf; do
+	if [ ! -e /usr/sbin/$cmd ]; then
+		cat > /usr/sbin/$cmd <<EOF
 #!/bin/sh -e
 
-echo "Invoking fake hostnamectl \$*"
+echo "Invoking fake $cmd \$*"
 exit 0
 EOF
-chmod +x /usr/sbin/hostnamectl
+		chmod +x /usr/sbin/$cmd
+	fi
+done
 
 
-cat > /usr/sbin/timedatectl <<EOF
+if ! which zenity; then
+	cat > /usr/sbin/zenity <<EOF
 #!/bin/sh -e
 
-echo "Invoking fake timedatectl \$*"
-exit 0
+f=\$(mktemp)
+cat > \$f
+(
+echo
+echo
+echo
+echo "Invoking fake zenity and selecting all on:"
+cat \$f
+echo
+echo
+) 1>&2
+cat \$f | awk 'NR % 3 == 2'
+rm -f \$f
 EOF
-chmod +x /usr/sbin/timedatectl
+	chmod +x /usr/sbin/zenity
+fi
