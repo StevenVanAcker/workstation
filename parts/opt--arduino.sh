@@ -1,7 +1,7 @@
 #!/bin/sh -e
 # DESCRIPTION: Arduino IDE
 
-base="https://www.arduino.cc/en/Main/Software"
+base="https://www.arduino.cc/en/software/"
 
 if [ -e /opt/arduino ];
 then
@@ -9,7 +9,7 @@ then
 	exit 0
 fi
 
-apt-get install -y avr-libc avrdude gcc-avr binutils-avr
+apt-get install -y avr-libc avrdude gcc-avr binutils-avr lynx curl
 
 tmpfile=$(mktemp --suffix .tar.xz)
 
@@ -18,6 +18,7 @@ urlpath=$(lynx -dump "$base" | grep -oP "https?://.*download.*\?f=(/arduino-[012
 url="https://downloads.arduino.cc$urlpath"
 
 echo "==> Downloading latest Arduino IDE to $tmpfile from $url"
+
 curl -Lo $tmpfile "$url"
 
 echo "==> Unpacking..."
