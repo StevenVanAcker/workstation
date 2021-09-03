@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
 # Install a bunch of packages used on a workstation
+# add i386 architecture
+dpkg --add-architecture i386
 
 apt-get update
 apt-get upgrade -y

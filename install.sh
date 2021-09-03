@@ -37,6 +37,8 @@ IsSelected() {
 }
 
 GetSelection() {
+	# FIXME: if env var set, override here and return the env var
+
 	if [ -e "profiles/$PROFILE" ];
 	then
 		# if the profile exists, load the selection from file
