@@ -4,8 +4,9 @@ jobs:
   main:
     runs-on: ubuntu-latest
     strategy:
+        fail-fast: false
         matrix:
-            ubuntuversion: ["21.04", "20.10", "20.04"]
+            ubuntuversion: ["21.10", "21.04", "20.10", "20.04"]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
