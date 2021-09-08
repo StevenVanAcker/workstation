@@ -11,6 +11,12 @@ then
 	exit 0
 fi
 
+if [ "$SKIPBIGSTUFF" = "yes" ];
+then
+	echo "Skipping this on request"; 
+	exit 0; 
+fi
+
 tmpfile=$(mktemp --suffix .tar.gz)
 
 echo "==> Checking for latest Android Studio IDE version"

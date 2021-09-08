@@ -7,6 +7,7 @@ export MAINUSER=$(id -nu 1000)
 echo "Main user: $MAINUSER"
 export PROFILE=$(cat /etc/installationprofile 2> /dev/null|| echo default);
 export INSTALL_PROFILE=$PROFILE
+export SKIPBIGSTUFF=${SKIPBIGSTUFF:-no}
 
 msgpref="Installing workstation ($PROFILE)"
 
