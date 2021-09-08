@@ -14,8 +14,8 @@ else
 	curl -Lo $DLDIR/minecraft.deb https://launcher.mojang.com/download/Minecraft.deb
 	echo "==> Installing package"
 	apt -y install $DLDIR/minecraft.deb
-	echo "==> Launching minecraft-launcher as $MAINUSER to create directories"
-	su -c "minecraft-launcher --help" $MAINUSER
+	#echo "==> Launching minecraft-launcher as $MAINUSER to create directories"
+	#su -c "minecraft-launcher --help" $MAINUSER
 	echo "==> Done installing minecraft"
 fi
 
@@ -26,8 +26,8 @@ else
 	echo "==> Downloading fabric installer from $fabricurl"
    	curl -Lo $DLDIR/fabric-installer.jar $fabricurl
 
-	echo "==> Running fabric-installer as $MAINUSER"
-	su -c "java -jar $DLDIR/fabric-installer.jar client" $MAINUSER
+	#echo "==> Running fabric-installer as $MAINUSER"
+	#su -c "java -jar $DLDIR/fabric-installer.jar client" $MAINUSER
 	echo "==> Done installing fabric"
 fi
 
