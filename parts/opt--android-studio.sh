@@ -11,7 +11,7 @@ then
 	exit 0
 fi
 
-if [ "$SKIPBIGSTUFF" = "yes" ];
+if [ -e /skipbigstuff ];
 then
 	echo "Skipping this on request"; 
 	exit 0; 
