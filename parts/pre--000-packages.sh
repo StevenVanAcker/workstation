@@ -37,6 +37,8 @@ apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fu
 
 piplist="	xortool \
 			websocket-client \
+			flake8 \
+			autopep8 \
 			"
 
 pip3 install $piplist
