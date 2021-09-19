@@ -10,7 +10,7 @@ apt-get install -y vim
 adduser -u 1000 --gecos "Steven Van Acker" --disabled-password deepstar
 
 # create some mock commands
-for cmd in hostnamectl timedatectl dconf dbus-launch; do
+for cmd in hostnamectl timedatectl dconf; do
 	if [ ! -e /usr/sbin/$cmd ]; then
 		cat > /usr/sbin/$cmd <<EOF
 #!/bin/sh -e
