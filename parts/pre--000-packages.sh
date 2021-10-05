@@ -27,7 +27,7 @@ apt-get install -y inkscape gimp
 apt-get install -y xorriso isolinux ovmf syslinux-utils debconf-utils genisoimage
 
 # other
-apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite ubuntu-restricted-addons jq
+apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite ubuntu-restricted-addons jq transmission vlc
 
 
 
