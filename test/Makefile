@@ -1,6 +1,7 @@
 cn := workstation-test-env
 
 build:
+	docker version
 	docker build --build-arg UBUNTUVERSION=$${UBUNTUVERSION:-latest} -t $(cn) .
 
 run:
