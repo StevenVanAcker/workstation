@@ -7,6 +7,16 @@
 
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
 
+ubuntuver=$(lsb_release -cs)
+
+if [ "$ubuntuver" = "impish" ];
+then
+	echo "Broken on impish..."
+	exit 0
+fi
+
+echo ">>> Trying to install vagrant on Ubuntu $ubuntuver"
+
 apt-get install -y gnupg lsb-release software-properties-common
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
