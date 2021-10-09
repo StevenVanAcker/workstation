@@ -63,5 +63,14 @@ then
 	echo "==> replacing it with symlink to $newmn"
 	mv $oldmn $oldmn.old
 	su -c "ln -s $newmn $oldmn" $MAINUSER
+	echo "==> Done."
+fi
+
+if [ ! -e /etc/udev/rules.d/49-micronucleus.rules ];
+then
+	echo "==> Creating /etc/udev/rules.d/49-micronucleus.rules"
+	mkdir -p /etc/udev/rules.d
+	curl -Lo /etc/udev/rules.d/49-micronucleus.rules https://github.com/micronucleus/micronucleus/blob/master/commandline/49-micronucleus.rules
+	echo "==> Done."
 fi
 
