@@ -1,6 +1,14 @@
-#!/bin/sh
+#!/bin/sh -e
+# DESCRIPTION: Virtualisation tools
 
-#qemu
 #virtualbox
 #vagrant
-#packer
+
+apt-get install -y 	docker.io \
+					docker-compose \
+					dosbox \
+					qemu-user-static \
+					qemy-system \
+					awscli \
+					packer
+
