@@ -8,7 +8,7 @@ apt-get install -y 	docker.io \
 					docker-compose \
 					dosbox \
 					qemu-user-static \
-					qemy-system \
+					qemu-system \
 					awscli \
 					packer
 
