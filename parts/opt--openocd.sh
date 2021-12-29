@@ -1,7 +1,10 @@
 #!/bin/sh -e
 
-
 # DESCRIPTION: OpenOCD Open On-Chip Debugger to interface with JTAG
+
+
+echo "=== Disabling openocd installation because repo errors with 403 on 2021-12-29"
+exit 0;
 
 apt-get install -y git make mdm
 
