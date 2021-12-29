@@ -22,6 +22,7 @@ extensions="
 	ms-azuretools.vscode-docker
 	tht13.html-preview-vscode
 	james-yu.latex-workshop
+	bierner.markdown-preview-github-styles
 
 	ms-python.vscode-pylance
 	ms-vscode-remote.remote-containers
