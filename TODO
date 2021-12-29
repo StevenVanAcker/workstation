@@ -6,3 +6,6 @@ minikube / kubectl
 terraform
 
 split DNS with dnsmasq
+
+use packer to build from a dvd image, and use with vagrant for local testing
+

@@ -1,2 +1,0 @@
-Bug for 21.10 results in apt failures due to a bug in docker:
-https://bugs.launchpad.net/cloud-images/+bug/1943049
