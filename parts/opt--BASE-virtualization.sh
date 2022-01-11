@@ -9,6 +9,7 @@ apt-get install -y 	docker.io \
 					dosbox \
 					qemu-user-static \
 					qemu-system \
+					gdb-avr \
 					awscli \
 					packer
 
