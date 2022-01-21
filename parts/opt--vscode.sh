@@ -23,6 +23,7 @@ extensions="
 	tht13.html-preview-vscode
 	james-yu.latex-workshop
 	bierner.markdown-preview-github-styles
+	ms-vscode.cpptools-extension-pack
 
 	ms-python.vscode-pylance
 	ms-vscode-remote.remote-containers
