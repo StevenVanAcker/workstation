@@ -11,7 +11,7 @@ apt-get update
 apt-get upgrade -y
 
 # devel tools
-apt-get install -y git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386
+apt-get install -y git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386 linux-libc-dev:i386
 
 # net tools
 apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark
