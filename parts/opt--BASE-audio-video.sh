@@ -13,3 +13,16 @@ apt-get install -y 	pavucontrol \
 					vlc \
 					kdenlive \
 					obs-studio
+
+
+# add virtual sink for pulseaudio
+mkdir -p /home/$MAINUSER/.config/pulse
+cp /etc/pulse/default.pa /home/$MAINUSER/.config/pulse/default.pa
+cat >> /home/$MAINUSER/.config/pulse/default.pa <<EOF
+
+# Adding virtual sink
+load-module module-null-sink sink_name=VirtualSink
+update-sink-proplist VirtualSink device.description=VirtualSink
+
+EOF
+chown -R $MAINUSER: /home/$MAINUSER/.config
