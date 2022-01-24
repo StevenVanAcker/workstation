@@ -1,4 +1,6 @@
 BASE-virtualization
+BASE-audio-video
+arduino
 ghidra
 gnuradio
 google-chrome
