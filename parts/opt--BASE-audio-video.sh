@@ -14,6 +14,34 @@ apt-get install -y 	pavucontrol \
 					kdenlive \
 					obs-studio
 
+# Build pagraphcontrol
+# Hint: right click in pagraphcontrol to create a loopback, which will forward its input to its output
+apt-get install -y npm
+npm install -g yarn
+
+if [ ! -d /opt/pagraphcontrol ];
+then
+	cd /opt
+	git clone https://github.com/futpib/pagraphcontrol.git
+	cd /opt/pagraphcontrol
+	yarn install
+	yarn build
+fi
+
+ln -sf /opt/pagraphcontrol/dist/pagraphcontrol-linux-x64/pagraphcontrol /usr/local/bin/pagraphcontrol
+
+
+# Build papeaks
+if [ ! -d /opt/papeaks ];
+then
+	cd /opt
+	git clone https://github.com/futpib/papeaks.git
+	cd /opt/papeaks
+	cargo build --release
+fi
+
+ln -sf /opt/papeaks/target/release/papeaks /usr/local/bin/papeaks
+
 
 # add virtual sink for pulseaudio
 mkdir -p /home/$MAINUSER/.config/pulse
