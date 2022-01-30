@@ -6,7 +6,9 @@
 #special sound routing
 #	https://obsproject.com/forum/threads/capture-single-pulseaudio-stream.35170/
 
-
+# Add upstream OBS Studio repo
+add-apt-repository -y ppa:obsproject/obs-studio
+apt-get update
 
 apt-get install -y 	pavucontrol \
 					pasystray \
