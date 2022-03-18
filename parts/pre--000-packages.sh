@@ -17,7 +17,7 @@ apt-get install -y git vim build-essential ipython3 python3-pip python3-venv gdb
 apt-get install -y nmap tcpdump net-tools tcptraceroute netcat telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark
 
 # GUI stuff
-apt-get install -y inkscape gimp 
+apt-get install -y inkscape gimp libreoffice
 # WARNING: inkscape uses python2
 
 # remastering CD
