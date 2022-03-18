@@ -14,14 +14,19 @@ apt-get install -y 	docker.io \
 # Install vagrant with some extensions. Specifically, AWS integration.
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
 
+apt-get install -y gnupg lsb-release software-properties-common
 ubuntuver=$(lsb_release -cs)
-
 echo ">>> Trying to install vagrant on Ubuntu $ubuntuver"
 
-apt-get install -y gnupg lsb-release software-properties-common
-curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
-apt-add-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-apt-get update && sudo apt-get install -y vagrant
+if [ "$ubuntuver" = "jammy" ];
+then
+	echo ">>> Skipping installation from hashicorp for jammy" # FIXME 2022-03-18
+	apt-get install -y vagrant
+else
+	curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+	apt-add-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+	apt-get update && apt-get install -y vagrant
+fi
 
 echo "==> Installing vagrant plugins"
 # vagrant plugin install vagrant-libvirt
