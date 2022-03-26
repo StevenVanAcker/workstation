@@ -9,3 +9,10 @@ split DNS with dnsmasq
 
 use packer to build from a dvd image, and use with vagrant for local testing
 
+
+every workstation should be able to serve as a VPN endpoint. This involves:
+	- setting up VPN
+	- setup masquerading on the default gateway interface
+	- enable IP forwarding
+	- set route on other hosts
+	
