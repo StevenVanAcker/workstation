@@ -3,6 +3,9 @@
 
 export MAINUSER=$(id -nu 1000)
 
+# accept virtualbox-ext-pack license
+echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
+
 apt-get install -y 	docker.io \
 					docker-compose \
 					dosbox \
