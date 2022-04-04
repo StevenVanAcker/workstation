@@ -1,6 +1,8 @@
 #!/bin/sh -e
 # DESCRIPTION: Virtualisation tools
 
+export MAINUSER=$(id -nu 1000)
+
 apt-get install -y 	docker.io \
 					docker-compose \
 					dosbox \
@@ -9,7 +11,11 @@ apt-get install -y 	docker.io \
 					gdb-avr \
 					awscli \
 					packer \
-					virtualbox
+					virtualbox \
+					virtualbox-ext-pack
+
+# for USB access
+adduser $MAINUSER vboxusers
 
 # Install vagrant with some extensions. Specifically, AWS integration.
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0
