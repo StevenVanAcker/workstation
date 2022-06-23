@@ -7,6 +7,8 @@ dpkg --add-architecture i386
 # enable source repos
 sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
 
+apt-add-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -cs)-updates main restricted universe multiverse" 
+
 apt-get update
 apt-get upgrade -y
 
