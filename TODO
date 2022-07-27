@@ -19,4 +19,6 @@ every workstation should be able to serve as a VPN endpoint. This involves:
 https://github.com/offensive-security/exploitdb
 https://cve-search.github.io/cpe-guesser/
 https://github.com/cve-search/cve-search
+https://nvd.nist.gov/vuln/data-feeds#APIS
+https://cve.mitre.org/data/downloads/
 
