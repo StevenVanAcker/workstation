@@ -15,3 +15,8 @@ every workstation should be able to serve as a VPN endpoint. This involves:
 	- enable IP forwarding
 	- set route on other hosts
 	
+
+https://github.com/offensive-security/exploitdb
+https://cve-search.github.io/cpe-guesser/
+https://github.com/cve-search/cve-search
+
