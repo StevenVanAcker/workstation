@@ -32,7 +32,7 @@ adduser $MAINUSER vboxusers
 
 # install azure-cli
 echo ">>> Installing azure-cli"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install vagrant with some extensions. Specifically, AWS integration.
 dpkg -l vagrant && echo "==> Vagrant already installed." && exit 0

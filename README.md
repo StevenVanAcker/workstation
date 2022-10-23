@@ -17,3 +17,6 @@ For local testing:
 * dotfiles?
 * /etc/hosts?
 * vscode extensions
+
+***This repo is intended to be run headless as root***
+

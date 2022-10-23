@@ -1,19 +1,25 @@
 #!/bin/sh -e
 
-echo "This will install packages and configure this machine as a workstation."
-echo "Sleeping 5 seconds so you can cancel..."
-sleep 5
+apt-get update
+apt-get install -y git sudo
 
-sudo apt-get update
-sudo apt-get install -y git sudo
-tmpdir=$(mktemp -d)
-cd $tmpdir
+if [ "$CLONEHERE" != "1" ];
+then
+	tmpdir=$(mktemp -d)
+	cd $tmpdir
+	echo "Cloning in $tmpdir"
+else
+	echo "Cloning in $PWD"
+fi
 
 git clone https://github.com/StevenVanAcker/workstation.git
 cd workstation
-sudo ./install.sh
+./install.sh
 
-cd /
-rm -rf $tmpdir
-
+if [ "$CLONEHERE" != "1" ];
+then
+	echo "Removing $tmpdir"
+	cd /
+	rm -rf $tmpdir
+fi
 echo "Done."

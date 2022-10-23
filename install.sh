@@ -37,18 +37,7 @@ RunPart() {
 	showmsg "Done running $fn"
 }
 
-IsSelected() {
-	if echo "$2" | tr " " "\n" | grep -q "$1";
-	then
-		echo TRUE
-	else
-		echo FALSE
-	fi
-}
-
 GetSelection() {
-	# FIXME: if env var set, override here and return the env var
-
 	if [ -e "profiles/$PROFILE" ];
 	then
 		# if the profile exists, load the selection from file
@@ -57,19 +46,6 @@ GetSelection() {
 	else
 		preselection=""
 	fi
-
-	# prompt the user with zenity, with preselection loaded
-	(
-	for fn in parts/opt--*.sh;
-	do
-		p=${fn%.sh}
-		p=${p##parts/opt--}
-		desc=$(grep "^#.*DESCRIPTION:" $fn |head -1| sed 's,^.*DESCRIPTION:,,')
-		echo $(IsSelected "$p" "$preselection")
-		echo $p
-		echo $desc
-	done
-	) | zenity --list --separator=" " --checklist --column Install --column Name --column Description
 }
 
 PartsFromSelection() {
