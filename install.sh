@@ -46,6 +46,7 @@ GetSelection() {
 	else
 		preselection=""
 	fi
+	echo $preselection
 }
 
 PartsFromSelection() {
