@@ -3,8 +3,8 @@
 apt-get update
 apt-get install -y curl sudo 
 
-# TODO remove this
-apt-get install -y vim
+# Select ALL packages
+echo "ALL" > /etc/installationprofile
 
 # default user
 adduser -u 1000 --gecos "Steven Van Acker" --disabled-password deepstar

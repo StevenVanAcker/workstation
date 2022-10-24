@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: select installation profile ALL
-        run: echo ALL > /etc/installationprofile
       - name: Build container on ${{matrix.ubuntuversion}}
         run: UBUNTUVERSION=${{matrix.ubuntuversion}} make -C test build
       - name: Install packages on ${{matrix.ubuntuversion}}
