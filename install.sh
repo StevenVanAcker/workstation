@@ -44,7 +44,12 @@ GetSelection() {
 		# after removing any comments
 		preselection=$(cat profiles/$PROFILE | sed 's:#.*::')
 	else
-		preselection=""
+		if [ "$PROFILE" = "ALL" ];
+		then
+			preselection=$(for i in  parts/opt--*.sh; do basename $i .sh | sed 's:^opt--::'; done)
+		else
+			preselection=""
+		fi
 	fi
 	echo $preselection
 }
