@@ -10,11 +10,12 @@ then
 	exit 0
 fi
 
-apt-get install -y unzip
+apt-get install -y unzip jq curl
 
-base="https://github.com/NationalSecurityAgency/ghidra/releases"
+base="https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest"
 tmpfile=$(mktemp --suffix .zip)
-abspath=$(lynx --dump "$base" |grep -oP 'https://.*.zip$'|head -1)
+abspath=$(curl -s "$base"|jq -r .assets[0].browser_download_url)
+
 
 echo "Downloading from $abspath"
 curl -Lo $tmpfile "$abspath"
