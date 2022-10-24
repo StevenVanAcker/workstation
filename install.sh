@@ -14,7 +14,7 @@ localerrors=""
 
 showmsg() {
 	echo "### $msgpref $1"
-	which plymouth > /dev/null && plymouth display-message --text="$msgpref $1" || true
+	# which plymouth > /dev/null && plymouth display-message --text="$msgpref $1" || true
 }
 
 finalerror() {
