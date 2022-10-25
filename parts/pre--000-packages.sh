@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # die die die
-apt-get remove -y gnome-initial-setup
+#apt-get remove -y gnome-initial-setup
 
 # Install a bunch of packages used on a workstation
 # add i386 architecture
