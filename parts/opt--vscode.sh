@@ -38,6 +38,7 @@ extensions="
 	vscjava.vscode-java-dependency
 	vscjava.vscode-java-test
 	visualstudioexptteam.vscodeintellicode
+	hashicorp.terraform
 	"
 
 for ext in $extensions;
@@ -45,3 +46,4 @@ do
 	echo "### Installing VSCode extension $ext"
 	su -c "code --force --install-extension $ext" $MAINUSER
 done
+
