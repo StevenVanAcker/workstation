@@ -32,8 +32,10 @@ apt-get install -y xorriso isolinux ovmf syslinux-utils debconf-utils genisoimag
 
 # other
 apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite ubuntu-restricted-addons jq transmission pv remmina \
-	software-properties-common parallel bmap-tools lastpass-cli htop
+	software-properties-common parallel bmap-tools htop
 
+# install bitwarden
+snap install bw
 
 
 ####################
