@@ -15,7 +15,7 @@ then
 		libcompress-raw-lzma-perl python3-pyasn1 \
 		python3-protobuf python3-dpkt \
 		libnet-pcap-perl libnetpacket-perl libnet-radius-perl \
-		python3-ldap3
+		python3-ldap3 python3-ldapdomaindump
 	pip3 install plyvel parsimonious
 	# WARNING: had to remove pysap, doesn't work in python3 pip
 	cd /opt
