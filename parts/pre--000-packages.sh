@@ -35,6 +35,7 @@ apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fu
 	software-properties-common parallel bmap-tools htop
 
 # install bitwarden
+apt-get install -y snapd
 snap install bw
 
 
