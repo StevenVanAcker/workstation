@@ -31,3 +31,5 @@ fi
 # https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 # https://gist.github.com/scottlinux/9a3b11257ac575e4f71de811322ce6b3
 # https://www.hack3r.com/forum-topic/wikipedia-wordlist
+# https://github.com/Porchetta-Industries/CrackMapExec
+
