@@ -15,6 +15,7 @@ then
 else
 	echo ">>> ... yes."
 	echo ">>> Adding terraform package repository"
+	rm -f /usr/share/keyrings/terraform-archive-keyring.gpg
 	curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/terraform-archive-keyring.gpg
 	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/terraform-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/terraform.list
 	apt-get update
