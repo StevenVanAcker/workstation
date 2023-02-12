@@ -28,6 +28,7 @@ extensions="
 	josetr.cmake-language-support-vscode
 	ms-azuretools.vscode-docker
 	ms-dotnettools.vscode-dotnet-runtime
+	ms-python.isort
 	ms-python.python
 	ms-python.vscode-pylance
 	ms-toolsai.jupyter
