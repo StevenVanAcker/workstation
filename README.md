@@ -11,12 +11,12 @@ For local testing:
 ## Things to think about before reinstalling
 
 * make sure everything is backed up
-* added software?
+* added software? -- zgrep " install " /var/log/apt/history.log*
 * printer config?
 * added wifi networks?
 * dotfiles?
 * /etc/hosts?
-* vscode extensions
+* vscode extensions -- code --list-extensions
 
 ***This repo is intended to be run headless as root***
 

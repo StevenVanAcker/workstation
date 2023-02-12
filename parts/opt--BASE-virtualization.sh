@@ -32,7 +32,8 @@ apt-get install -y 	docker.io \
 					packer \
 					virtualbox \
 					virtualbox-ext-pack \
-					ansible
+					ansible \
+					wine
 
 # for USB access
 echo ">>> Adding $MAINUSER to vboxusers"
