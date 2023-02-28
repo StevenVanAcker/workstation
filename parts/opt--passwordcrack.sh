@@ -27,6 +27,14 @@ then
 	echo 'export PATH="/opt/JohnTheRipper/run/:$PATH"' >> /etc/bash.bashrc
 fi
 
+if [ "$install_john" = "true" -a ! -e /opt/SecLists.zip ];
+then
+	echo "==> Getting password lists"
+	wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O /opt/SecLists.zip
+	cd /opt
+    unzip SecLists.zip
+fi
+
 
 # https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 # https://gist.github.com/scottlinux/9a3b11257ac575e4f71de811322ce6b3
