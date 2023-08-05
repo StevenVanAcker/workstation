@@ -18,7 +18,8 @@ apt-get update
 apt-get upgrade -y
 
 # devel tools
-apt-get install -y git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386 linux-libc-dev:i386 cargo
+apt-get install -y git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386 linux-libc-dev:i386 cargo \
+	python3-flake8 python3-autopep8 python3-websocket
 
 # net tools
 apt-get install -y nmap tcpdump net-tools tcptraceroute netcat-openbsd telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark wireguard whois \
@@ -32,7 +33,7 @@ apt-get install -y inkscape gimp libreoffice
 apt-get install -y xorriso isolinux ovmf syslinux-utils debconf-utils genisoimage
 
 # other
-apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite ubuntu-restricted-addons jq transmission pv remmina \
+apt-get install -y openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite3 ubuntu-restricted-addons jq transmission pv remmina \
 	software-properties-common parallel bmap-tools htop ldap-utils
 
 # install bitwarden
@@ -46,9 +47,6 @@ npm install -g @bitwarden/cli
 ####################
 
 piplist="	xortool \
-			websocket-client \
-			flake8 \
-			autopep8 \
 			"
 
-pip3 install $piplist
+pip3 install --break-system-packages $piplist
