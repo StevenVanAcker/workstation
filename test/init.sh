@@ -4,7 +4,7 @@ apt-get update
 apt-get install -y curl sudo 
 
 # Select ALL packages
-echo "ALL" > /etc/installationprofile
+echo "ALL" > /etc/hostname
 
 # default user
 adduser -u 1000 --gecos "Steven Van Acker" --disabled-password deepstar

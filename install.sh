@@ -5,7 +5,7 @@ shopt -s nullglob
 export DEBIAN_FRONTEND=noninteractive
 export MAINUSER=$(id -nu 1000)
 echo "Main user: $MAINUSER"
-export PROFILE=$(cat /etc/installationprofile 2> /dev/null|| echo default);
+export PROFILE=$(cat /etc/hostname 2> /dev/null|| echo default);
 export INSTALL_PROFILE=$PROFILE
 
 msgpref="Installing workstation ($PROFILE)"
