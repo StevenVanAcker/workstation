@@ -8,7 +8,12 @@
 
 # Add upstream OBS Studio repo
 add-apt-repository -y ppa:obsproject/obs-studio
-apt-get update
+if ! apt-get update;
+then
+	echo "PPA for obs-studio failed, reverting to vanilla apt repos"
+	rm -f /etc/apt/sources.list.d/*obsproject*
+	apt-get update
+fi
 
 apt-get install -y 	pavucontrol \
 					pasystray \
