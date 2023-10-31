@@ -14,7 +14,7 @@ sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
 #apt-add-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -cs)-updates main restricted universe multiverse" 
 
 echo ">>> Performing upgrade"
-apt-get update
+while ! apt-get update; do echo trying again; done
 apt-get upgrade -y
 
 # devel tools
