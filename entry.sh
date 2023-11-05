@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
-aptdcon --hide-terminal --refresh --install "git sudo hello"
+yes | aptdcon --hide-terminal --refresh
+yes | aptdcon --hide-terminal --install="git sudo hello"
 
 if [ "$CLONEHERE" != "1" ];
 then
