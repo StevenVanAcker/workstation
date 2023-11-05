@@ -1,7 +1,6 @@
 #!/bin/sh -e
 
-apt-get update
-apt-get install -y git sudo
+aptdcon --hide-terminal --refresh --install "git sudo hello"
 
 if [ "$CLONEHERE" != "1" ];
 then
