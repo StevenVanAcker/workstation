@@ -35,7 +35,8 @@ EOF
 mkdir -p $MAINHOME/.config/autostart
 mkdir -p $MAINHOME/.config/environment.d
 
-cp /etc/xdg/autostart/gnome-keyring-ssh.desktop $MAINHOME/.config/autostart
+# FIXME: the following line may not work
+# cp /etc/xdg/autostart/gnome-keyring-ssh.desktop $MAINHOME/.config/autostart
 echo "Hidden=true" >> $MAINHOME/.config/autostart/gnome-keyring-ssh.desktop
 
 cat > $MAINHOME/.config/environment.d/99-gpg-agent_ssh.conf <<'EOF'
