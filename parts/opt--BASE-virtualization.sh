@@ -7,31 +7,19 @@ export RELEASE=$(lsb_release -cs)
 # accept virtualbox-ext-pack license
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
-# setup terraform repo
+# setup hashicorp repo
 echo ">>> Checking whether hashicorp supports release $RELEASE"
 if ! curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
 	echo ">>> ... no."
 else
 	echo ">>> ... yes."
-	echo ">>> Adding terraform package repository"
-	rm -f /usr/share/keyrings/terraform-archive-keyring.gpg
-	curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/terraform-archive-keyring.gpg
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/terraform-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/terraform.list
+	echo ">>> Adding hashicorp package repository"
+	rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
+	curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/hashicorp.list
 	apt-get update
-	apt-get install -y terraform
-fi
-
-# install packer
-rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
-curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" > /etc/apt/sources.list.d/hashicorp.list
-
-# check whether there is a repo for packer for the current ubuntu release
-if ! apt-get update;
-then
-	echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com lunar main" > /etc/apt/sources.list.d/hashicorp.list
-	apt-get update
+	apt-get install -y terraform packer
 fi
 
 echo ">>> Installing packages"
@@ -42,7 +30,6 @@ apt-get install -y 	docker.io \
 					qemu-system \
 					gdb-avr \
 					awscli \
-					packer \
 					virtualbox \
 					virtualbox-ext-pack \
 					ansible \
