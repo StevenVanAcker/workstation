@@ -6,7 +6,7 @@ export MAINUSER=$(id -nu 1000)
 DLDIR=/opt/downloads/minecraft
 mkdir -p $DLDIR
 
-if dpkg -l minecraft-launcher; then
+if dpkg -s minecraft-launcher; then
 	echo "==> Minecraft already installed."
 else
 	# installing minecraft
