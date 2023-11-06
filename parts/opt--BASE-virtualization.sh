@@ -44,9 +44,12 @@ echo ">>> Installing azure-cli"
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install vagrant with some extensions. Specifically, AWS integration.
+echo ">>> Checking vagrant"
 dpkg -s vagrant && echo "==> Vagrant already installed." && exit 0
 
+echo ">>> Installing gnupg and friends"
 apt-get install -y gnupg lsb-release software-properties-common
+
 echo ">>> Trying to install vagrant on Ubuntu $RELEASE"
 
 apt-get update && apt-get install -y vagrant
