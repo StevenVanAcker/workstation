@@ -60,6 +60,6 @@ extensions="
 for ext in $extensions;
 do
 	echo "### Installing VSCode extension $ext"
-	su -c "code --force --install-extension $ext" $MAINUSER
+	su -c "code --force --install-extension $ext" $MAINUSER || true
 done
 
