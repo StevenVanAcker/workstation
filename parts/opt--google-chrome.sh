@@ -16,4 +16,4 @@ rm -rf $tmpdir
 
 echo "==> Updating repos and installing dependencies..."
 yes | aptdcon --hide-terminal --refresh
-yes | aptdcon --hide-terminal --fix-install
+yes | aptdcon --hide-terminal --fix-depends --fix-install
