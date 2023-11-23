@@ -6,7 +6,7 @@ dpkg -s steam && echo "==> Steam already installed." && exit 0
 
 dpkg --add-architecture i386
 yes | aptdcon --hide-terminal --refresh
-yes | aptdcon --hide-terminal --install="steam"
+yes | ( aptdcon --hide-terminal --install="steam" || aptdcon --hide-terminal --install="steam-installer" )
 
 nvidia386=$(dpkg -l |grep -oP "libnvidia-gl-.*:amd64" | sed 's:amd64:i386:')
 
