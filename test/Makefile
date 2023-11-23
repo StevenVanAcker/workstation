@@ -1,4 +1,5 @@
 cn := workstation-test-env
+opts := --security-opt seccomp=unconfined --rm --hostname ALL
 
 build:
 	docker version
@@ -6,7 +7,7 @@ build:
 	docker build --build-arg UBUNTUVERSION=$${UBUNTUVERSION:-latest} -t $(cn) .
 
 run:
-	docker run --security-opt seccomp=unconfined --rm $(cn) /bin/sh -c '/init.sh && /selftest.sh'
+	docker run $(opts) $(cn) /bin/sh -c '/init.sh && /selftest.sh'
 
 debug:
-	docker run --security-opt seccomp=unconfined --rm -ti -v $$PWD/..:/data $(cn) /bin/bash
+	docker run $(opts) -ti -v $$PWD/..:/data $(cn) /bin/bash
