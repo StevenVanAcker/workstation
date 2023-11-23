@@ -3,7 +3,7 @@
 
 base="https://developer.android.com/studio"
 
-apt-get -y install adb
+yes | aptdcon --hide-terminal --install="adb"
 
 if [ -e /opt/android-studio ];
 then

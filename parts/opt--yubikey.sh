@@ -8,9 +8,9 @@ export MAINHOME=$(getent passwd $MAINUSER| cut -d: -f 6)
 
 # Following https://developers.yubico.com/PGP/SSH_authentication/
 
-apt-get install -y \
+yes | aptdcon --hide-terminal --install="\
 	yubikey-manager \
-	gnupg pcscd scdaemon
+	gnupg pcscd scdaemon"
 
 
 mkdir -p $MAINHOME/.gnupg

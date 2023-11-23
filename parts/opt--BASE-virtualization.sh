@@ -18,22 +18,25 @@ else
 	rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
 	curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/hashicorp.list
-	apt-get update
-	apt-get install -y terraform packer
+	
+	yes | aptdcon --hide-terminal --refresh
+	yes | aptdcon --hide-terminal --install="terraform packer"
 fi
 
 echo ">>> Installing packages"
-apt-get install -y 	docker.io \
-					docker-compose \
-					dosbox \
-					qemu-user-static \
-					qemu-system \
-					gdb-avr \
-					awscli \
-					virtualbox \
-					virtualbox-ext-pack \
-					ansible \
-					wine
+PACKAGES="docker.io \
+		docker-compose \
+		dosbox \
+		qemu-user-static \
+		qemu-system \
+		gdb-avr \
+		awscli \
+		virtualbox \
+		virtualbox-ext-pack \
+		ansible \
+		wine"
+
+yes | aptdcon --hide-terminal --install="$PACKAGES"
 
 # for USB access
 echo ">>> Adding $MAINUSER to vboxusers"
@@ -48,11 +51,13 @@ echo ">>> Checking vagrant"
 dpkg -s vagrant && echo "==> Vagrant already installed." && exit 0
 
 echo ">>> Installing gnupg and friends"
-apt-get install -y gnupg lsb-release software-properties-common
+yes | aptdcon --hide-terminal --install="gnupg lsb-release software-properties-common"
 
 echo ">>> Trying to install vagrant on Ubuntu $RELEASE"
 
-apt-get update && apt-get install -y vagrant
+
+yes | aptdcon --hide-terminal --refresh
+yes | aptdcon --hide-terminal --install="vagrant"
 
 echo "==> Installing vagrant plugins"
 # vagrant plugin install vagrant-libvirt

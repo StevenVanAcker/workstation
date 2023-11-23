@@ -2,6 +2,6 @@
 
 # DESCRIPTION: GNU Radio
 
-apt-get install -y gnuradio gr-osmosdr
+yes | aptdcon --hide-terminal --install="gnuradio gr-osmosdr"
 # WARNING: uhd-host uses python2
 

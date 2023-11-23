@@ -4,18 +4,18 @@
 
 install_john=true
 
-apt-get install -y hashcat
+yes | aptdcon --hide-terminal --install="hashcat"
 
 if [ "$install_john" = "true" -a ! -e /opt/JohnTheRipper ];
 then
 	echo "==> Installing JohnTheRipper from https://github.com/magnumripper/JohnTheRipper.git"
-	apt-get -y install build-essential python3-pip zlib1g-dev libssl-dev git mdm \
+	yes | aptdcon --hide-terminal --install="build-essential python3-pip zlib1g-dev libssl-dev git mdm \
 		yasm libgmp-dev libpcap-dev pkg-config libbz2-dev \
 		nvidia-opencl-dev \
 		libcompress-raw-lzma-perl python3-pyasn1 \
 		python3-protobuf python3-dpkt \
 		libnet-pcap-perl libnetpacket-perl libnet-radius-perl \
-		python3-ldap3 python3-ldapdomaindump jxplorer
+		python3-ldap3 python3-ldapdomaindump jxplorer"
 	pip3 install plyvel parsimonious --break-system-packages
 	# WARNING: had to remove pysap, doesn't work in python3 pip
 	cd /opt

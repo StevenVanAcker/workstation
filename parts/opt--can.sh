@@ -1,7 +1,7 @@
 #!/bin/sh -e
 # DESCRIPTION: CAN tools
 
-apt-get install -y can-utils
+yes | aptdcon --hide-terminal --install="can-utils"
 
 # FIXME: switch to netplan
 # https://wiki.ubuntu.com/MigratingToNetplan

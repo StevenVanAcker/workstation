@@ -2,7 +2,7 @@
 
 # DESCRIPTION: Minicom text-based modem control and terminal emulator
 
-apt-get install -y minicom
+yes | aptdcon --hide-terminal --install="minicom"
 
 cat > /etc/minicom/minirc.dfl <<EOF
 # Machine-generated file - use "minicom -s" to change parameters.

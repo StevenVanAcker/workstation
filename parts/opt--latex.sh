@@ -7,5 +7,5 @@ then
 	exit 0; 
 fi
 
-apt-get install -y texlive-full latexmk
+yes | aptdcon --hide-terminal --install="texlive-full latexmk"
 

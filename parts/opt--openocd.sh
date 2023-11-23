@@ -6,12 +6,13 @@
 echo "=== Disabling openocd installation because repo errors with 403 on 2021-12-29"
 exit 0;
 
-apt-get install -y git make mdm
+yes | aptdcon --hide-terminal --install="git make mdm"
 
 # Install OpenOCD according to https://research.kudelskisecurity.com/2014/05/01/jtag-debugging-made-easy-with-bus-pirate-and-openocd/
-apt-get install -y libtool autoconf texinfo libusb-dev libftdi-dev libusb-1.0-0-dev
+yes | aptdcon --hide-terminal --install="libtool autoconf texinfo libusb-dev libftdi-dev libusb-1.0-0-dev"
+
 # extra https://stackoverflow.com/questions/8811381/possibly-undefined-macro-ac-msg-error
-apt-get install -y pkg-config autoconf-archive
+yes | aptdcon --hide-terminal --install="pkg-config autoconf-archive"
 
 if [ ! -d /opt/openocd ];
 then

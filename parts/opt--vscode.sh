@@ -10,10 +10,9 @@ rm -f $tf
 
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
 
-
-apt-get install -y apt-transport-https
-apt-get update
-apt-get install -y code # or code-insiders
+yes | aptdcon --hide-terminal --install="apt-transport-https"
+yes | aptdcon --hide-terminal --refresh
+yes | aptdcon --hide-terminal --install="code"
 
 extensions="
 	alex079.vscode-avr-helper

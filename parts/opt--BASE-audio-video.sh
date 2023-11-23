@@ -7,23 +7,17 @@
 #	https://obsproject.com/forum/threads/capture-single-pulseaudio-stream.35170/
 
 # Add upstream OBS Studio repo
-add-apt-repository -y ppa:obsproject/obs-studio
-if ! apt-get update;
+if curl --fail-with-body -o /dev/null https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu/dists/mantic/Release;
 then
-	echo "PPA for obs-studio failed, reverting to vanilla apt repos"
-	rm -f /etc/apt/sources.list.d/*obsproject*
-	apt-get update
+	add-apt-repository -y ppa:obsproject/obs-studio
+	yes | aptdcon --hide-terminal --refresh
 fi
 
-apt-get install -y 	pavucontrol \
-					pasystray \
-					vlc \
-					kdenlive \
-					obs-studio
+yes | aptdcon --hide-terminal --install="pavucontrol pasystray vlc kdenlive obs-studio npm"
+
 
 # Build pagraphcontrol
 # Hint: right click in pagraphcontrol to create a loopback, which will forward its input to its output
-apt-get install -y npm
 npm install -g yarn
 
 if [ ! -d /opt/pagraphcontrol ];

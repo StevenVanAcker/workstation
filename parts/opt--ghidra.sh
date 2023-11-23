@@ -10,7 +10,7 @@ then
 	exit 0
 fi
 
-apt-get install -y unzip jq curl
+yes | aptdcon --hide-terminal --install="unzip jq curl"
 
 base="https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest"
 tmpfile=$(mktemp --suffix .zip)

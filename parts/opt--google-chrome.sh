@@ -15,6 +15,5 @@ dpkg -i $tmpdir/google-chrome-stable_current_amd64.deb || dpkg -s google-chrome-
 rm -rf $tmpdir
 
 echo "==> Updating repos and installing dependencies..."
-apt-get update
-apt-get -f install -y
-
+yes | aptdcon --hide-terminal --refresh
+yes | aptdcon --hide-terminal --fix-install

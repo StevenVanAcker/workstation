@@ -8,11 +8,6 @@ dpkg --add-architecture i386
 echo ">>> Enabling source repos"
 sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
 
-#echo ">>> Enabling updates repos"
-#apt-get update
-#apt-get install -y lsb-release software-properties-common
-#apt-add-repository "deb http://archive.canonical.com/ubuntu $(lsb_release -cs)-updates main restricted universe multiverse" 
-
 echo ">>> Performing upgrade"
 yes | aptdcon --hide-terminal --refresh
 yes | aptdcon --hide-terminal --full-upgrade

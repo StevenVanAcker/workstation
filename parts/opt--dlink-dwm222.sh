@@ -6,7 +6,7 @@
 # http://blog.petrilopia.net/linux/raspberry-pi-and-d-link-dwm-222/
 
 # there are 2 ways to connect: via PPP or via QMI wwan
-apt-get install -y wvdial libqmi-utils
+yes | aptdcon --hide-terminal --install="wvdial libqmi-utils"
 
 # (PPP) start with:
 #   wvdial

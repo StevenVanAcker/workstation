@@ -7,18 +7,18 @@ install_bully=true
 install_hcxdumptool=true
 install_hcxtools=true
 
-apt-get install -y \
+yes | aptdcon --hide-terminal --install="\
 	aircrack-ng \
 	wifite \
 	reaver \
 	weplab \
 	macchanger \
-	cowpatty
+	cowpatty"
 
 if [ "$install_bully" = "true" -a ! -e /opt/bully ];
 then
 	echo "==> Installing bully from https://github.com/aanarchyy/bully"
-	apt-get -y install build-essential libpcap-dev aircrack-ng pixiewps
+	yes | aptdcon --hide-terminal --install="build-essential libpcap-dev aircrack-ng pixiewps"
 	cd /opt
 	git clone https://github.com/aanarchyy/bully
 	cd bully/src
@@ -29,7 +29,7 @@ fi
 if [ "$install_hcxdumptool" = "true" -a ! -e /opt/hcxdumptool ];
 then
 	echo "==> Installing hcxdumptool from https://github.com/ZerBea/hcxdumptool"
-	apt-get -y install build-essential libssl-dev
+	yes | aptdcon --hide-terminal --install="build-essential libssl-dev"
 	cd /opt
 	git clone https://github.com/ZerBea/hcxdumptool
 	cd hcxdumptool
@@ -40,7 +40,7 @@ fi
 if [ "$install_hcxtools" = "true" -a ! -e /opt/hcxtools ];
 then
 	echo "==> Installing hcxtools from https://github.com/ZerBea/hcxtools"
-	apt-get -y install build-essential libssl-dev libcurl4-openssl-dev zlib1g-dev
+	yes | aptdcon --hide-terminal --install="build-essential libssl-dev libcurl4-openssl-dev zlib1g-dev"
 	cd /opt
 	git clone https://github.com/ZerBea/hcxtools
 	cd hcxtools
