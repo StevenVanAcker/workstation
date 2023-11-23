@@ -8,12 +8,9 @@ export PAGER=cat
 
 dpkg -s google-chrome-stable && echo "==> Chrome already installed." && exit 0
 
-echo "==> Downloading and installing Google Chrome .deb package"
-tmpdir=$(mktemp -d)
-curl -Lo $tmpdir/google-chrome-stable_current_amd64.deb 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb?src=0&filename=google-chrome-stable_current_amd64.deb'
-dpkg -i $tmpdir/google-chrome-stable_current_amd64.deb || dpkg -s google-chrome-stable
-rm -rf $tmpdir
+yes | aptdcon --hide-terminal --install="curl gnupg2"
 
-echo "==> Updating repos and installing dependencies..."
+curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 yes | aptdcon --hide-terminal --refresh
-yes | aptdcon --hide-terminal --fix-depends --fix-install
+yes | aptdcon --hide-terminal --install="google-chrome-stable"
