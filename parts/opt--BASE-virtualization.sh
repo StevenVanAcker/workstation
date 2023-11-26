@@ -11,8 +11,13 @@ echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-s
 echo ">>> Checking whether hashicorp supports release $RELEASE"
 if ! curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
-	echo ">>> ... no."
-else
+	export RELEASE=$(distro-info --lts)
+	echo ">>> ... no. Using $RELEASE instead."
+fi
+
+echo ">>> Checking whether hashicorp supports release $RELEASE"
+if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
+then
 	echo ">>> ... yes."
 	echo ">>> Adding hashicorp package repository"
 	rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -21,6 +26,8 @@ else
 	
 	yes | aptdcon --hide-terminal --refresh
 	yes | aptdcon --hide-terminal --install="terraform packer"
+else
+	echo ">>> ... no."
 fi
 
 echo ">>> Installing packages"
