@@ -39,7 +39,7 @@ PACKAGES="docker.io \
 		gdb-avr \
 		awscli \
 		virtualbox \
-		virtualboxi-qt \
+		virtualbox-qt \
 		virtualbox-ext-pack \
 		ansible \
 		wine"
