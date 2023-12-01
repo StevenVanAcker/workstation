@@ -65,10 +65,9 @@ echo ">>> Trying to install vagrant on Ubuntu $RELEASE"
 
 
 yes | aptdcon --hide-terminal --refresh
-yes | aptdcon --hide-terminal --install="vagrant"
+yes | aptdcon --hide-terminal --install="vagrant vagrant-libvirt"
 
 echo "==> Installing vagrant plugins"
-# vagrant plugin install vagrant-libvirt
 vagrant plugin install vagrant-host-shell
 #vagrant plugin install vagrant-aws # broken on 2020-06-09 because of fricking ruby
 vagrant plugin install vagrant-winrm
