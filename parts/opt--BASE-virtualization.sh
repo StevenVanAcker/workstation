@@ -42,6 +42,7 @@ PACKAGES="docker.io \
 		virtualbox-qt \
 		virtualbox-ext-pack \
 		ansible \
+		libvirt-daemon-system \
 		wine"
 
 yes | aptdcon --hide-terminal --install="$PACKAGES"
