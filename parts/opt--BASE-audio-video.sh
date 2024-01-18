@@ -55,3 +55,58 @@ update-sink-proplist VirtualSink device.description=VirtualSink
 
 EOF
 chown -R $MAINUSER: /home/$MAINUSER/.config
+
+# add virtual webcam
+yes | aptdcon --hide-terminal --install="v4l-utils ffmpeg v4l2loopback-dkms v4l2loopback-utils"
+
+cat > /etc/modprobe.d/v4l2loopback.conf <<EOF
+options v4l2loopback exclusive_caps=1 video_nr=99 card_label="VirtualCam:VirtualCam"
+EOF
+
+if ! grep -q v4l2loopback /etc/modules;
+then
+	echo v4l2loopback >> /etc/modules
+fi
+
+modprobe -r v4l2loopback
+depmod -a
+modprobe v4l2loopback
+
+cat > /usr/local/bin/remotecam.sh <<EOF
+#!/bin/bash
+
+host=\$1
+
+if [ "\$host" = "" ];
+then
+	echo "Usage: \$0 [<user>@]<SSH host>"
+	exit 1
+fi
+
+# v4l2loopback sometimes flakes out, so reload it by default
+# Note: no options, those are in /etc/modules, with video_nr=99
+# so that the virtual camera registers as /dev/video99
+sudo modprobe -r v4l2loopback
+sudo modprobe v4l2loopback
+
+(
+	while true;
+	do
+		if v4l2-ctl --all -d /dev/video99 | grep -q "loopback: ok";
+		then
+			ffplay /dev/video99
+		fi
+		sleep 1;
+	done
+) &
+
+ffplaypid=\$!
+function finish {
+  kill \$ffplaypid
+}
+trap finish EXIT
+
+ssh \$host ffmpeg -i /dev/video0 -codec copy -f matroska - | ffmpeg -i /dev/stdin -codec copy -f v4l2 /dev/video99
+EOF
+chmod +x /usr/local/bin/remotecam.sh
+
