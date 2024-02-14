@@ -46,4 +46,7 @@ npm install -g @bitwarden/cli
 piplist="	xortool \
 			"
 
-pip3 install --break-system-packages $piplist
+# remove the need for --break-system-packages, since that would not be
+# compatible with older versions pip
+rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+pip3 install $piplist

@@ -16,7 +16,7 @@ then
 		python3-protobuf python3-dpkt \
 		libnet-pcap-perl libnetpacket-perl libnet-radius-perl \
 		python3-ldap3 python3-ldapdomaindump jxplorer"
-	pip3 install plyvel parsimonious --break-system-packages
+	pip3 install plyvel parsimonious
 	# WARNING: had to remove pysap, doesn't work in python3 pip
 	cd /opt
 	git clone https://github.com/magnumripper/JohnTheRipper.git
