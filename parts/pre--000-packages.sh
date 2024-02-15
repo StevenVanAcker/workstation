@@ -32,11 +32,20 @@ PACKAGES="$PACKAGES xorriso isolinux ovmf syslinux-utils debconf-utils genisoima
 PACKAGES="$PACKAGES openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite3 ubuntu-restricted-addons jq transmission pv remmina \
 	software-properties-common parallel bmap-tools htop ldap-utils"
 
-# install bitwarden
-PACKAGES="$PACKAGES npm"
 yes | aptdcon --hide-terminal --install="$PACKAGES"
-npm install -g @bitwarden/cli
 
+# install bitwarden
+export RELEASE=$(lsb_release -rs)
+
+if [ "$RELEASE" = "22.04" ];
+then
+	curl -fsSL https://deb.nodesource.com/setup_21.x | bash -e
+	yes | aptdcon --hide-terminal --install="nodejs"
+else
+	yes | aptdcon --hide-terminal --install="npm"
+fi
+
+npm install -g @bitwarden/cli
 
 
 ####################
@@ -46,4 +55,7 @@ npm install -g @bitwarden/cli
 piplist="	xortool \
 			"
 
-pip3 install --break-system-packages $piplist
+# remove the need for --break-system-packages, since that would not be
+# compatible with older versions pip
+rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+pip3 install $piplist
