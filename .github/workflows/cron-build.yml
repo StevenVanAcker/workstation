@@ -10,7 +10,7 @@ jobs:
             ubuntuversion: ["22.04", "23.04", "23.10", "24.04"]
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build container on ${{matrix.ubuntuversion}}
         run: UBUNTUVERSION=${{matrix.ubuntuversion}} make -C test build
       - name: Install packages on ${{matrix.ubuntuversion}}
