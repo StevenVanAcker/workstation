@@ -35,7 +35,7 @@ PACKAGES="$PACKAGES openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-f
 yes | aptdcon --hide-terminal --install="$PACKAGES"
 
 # install bitwarden
-export RELEASE=$(lsb_release -cs)
+export RELEASE=$(lsb_release -rs)
 
 if [ "$RELEASE" = "22.04" ];
 then
