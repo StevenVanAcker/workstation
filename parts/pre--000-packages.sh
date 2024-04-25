@@ -39,9 +39,11 @@ export RELEASE=$(lsb_release -rs)
 
 if [ "$RELEASE" = "22.04" ];
 then
+	echo """# Ubuntu $RELEASE detected, installing upstream nodejs"
 	curl -fsSL https://deb.nodesource.com/setup_21.x | bash -e
 	yes | aptdcon --hide-terminal --install="nodejs"
 else
+	echo """# Ubuntu $RELEASE detected, installing npm via apt"
 	yes | aptdcon --hide-terminal --install="npm"
 fi
 
