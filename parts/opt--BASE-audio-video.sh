@@ -7,10 +7,14 @@
 #	https://obsproject.com/forum/threads/capture-single-pulseaudio-stream.35170/
 
 # Add upstream OBS Studio repo
-if curl --fail-with-body -o /dev/null https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu/dists/mantic/Release;
+RELEASE=$(lsb_release -cs)
+
+if curl --fail-with-body -o /dev/null https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu/dists/$RELEASE/Release;
 then
 	add-apt-repository -y ppa:obsproject/obs-studio
 	yes | aptdcon --hide-terminal --refresh
+else
+	echo "!!! obs-studio is not supported in Ubuntu $RELEASE"
 fi
 
 yes | aptdcon --hide-terminal --install="pavucontrol pasystray vlc kdenlive obs-studio npm"
