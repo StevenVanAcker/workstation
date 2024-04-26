@@ -42,7 +42,6 @@ PACKAGES="docker.io \
 		qemu-user-static \
 		qemu-system \
 		gdb-avr \
-		awscli \
 		virtualbox \
 		virtualbox-qt \
 		virtualbox-ext-pack \
@@ -55,6 +54,10 @@ yes | aptdcon --hide-terminal --install="$PACKAGES"
 # for USB access
 echo ">>> Adding $MAINUSER to vboxusers"
 adduser $MAINUSER vboxusers
+
+# install awscli
+pip3 install aws
+aws --version
 
 # install azure-cli
 echo ">>> Installing azure-cli"
