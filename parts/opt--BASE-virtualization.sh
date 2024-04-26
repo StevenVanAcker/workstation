@@ -2,19 +2,12 @@
 # DESCRIPTION: Virtualisation tools
 
 export MAINUSER=$(id -nu 1000)
-export RELEASE=$(lsb_release -cs)
+export RELEASE=$(distro-info --lts)
 
 # accept virtualbox-ext-pack license
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
 # setup hashicorp repo
-echo ">>> Checking whether hashicorp supports release $RELEASE"
-if ! curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
-then
-	export RELEASE=$(distro-info --lts)
-	echo ">>> ... no. Using $RELEASE instead."
-fi
-
 echo ">>> Checking whether hashicorp supports release $RELEASE"
 if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
