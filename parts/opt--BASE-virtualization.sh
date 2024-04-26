@@ -2,26 +2,37 @@
 # DESCRIPTION: Virtualisation tools
 
 export MAINUSER=$(id -nu 1000)
-export RELEASE=$(distro-info --lts)
 
 # accept virtualbox-ext-pack license
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
 # setup hashicorp repo
-echo ">>> Checking whether hashicorp supports release $RELEASE"
-if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
+RELEASE=none
+for rel in $(distro-info --supported | tac);
+do
+	echo -n ">>> Checking whether hashicorp supports release $rel: "
+	if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$rel/Release;
+	then
+		echo "yes."
+		export RELEASE=$rel
+	else
+		echo "no."
+	fi
+done
+
+if [ "$RELEASE" = "none" ];
 then
-	echo ">>> ... yes."
-	echo ">>> Adding hashicorp package repository"
-	rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
-	curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/hashicorp.list
-	
-	yes | aptdcon --hide-terminal --refresh
-	yes | aptdcon --hide-terminal --install="terraform packer"
-else
-	echo ">>> ... no."
+	echo "!!! Hashicorp is not supported on any release"
+	false
 fi
+
+echo ">>> Adding hashicorp package repository"
+rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
+curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $RELEASE main" > /etc/apt/sources.list.d/hashicorp.list
+
+yes | aptdcon --hide-terminal --refresh
+yes | aptdcon --hide-terminal --install="terraform packer"
 
 echo ">>> Installing packages"
 PACKAGES="docker.io \
