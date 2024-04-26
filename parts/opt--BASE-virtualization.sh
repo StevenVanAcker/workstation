@@ -56,7 +56,7 @@ echo ">>> Adding $MAINUSER to vboxusers"
 adduser $MAINUSER vboxusers
 
 # install awscli
-pip3 install aws
+pip3 install awscli
 aws --version
 
 # install azure-cli
