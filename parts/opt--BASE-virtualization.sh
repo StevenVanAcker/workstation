@@ -55,8 +55,8 @@ yes | aptdcon --hide-terminal --install="$PACKAGES"
 echo ">>> Adding $MAINUSER to vboxusers"
 adduser $MAINUSER vboxusers
 
-# install awscli
-pip3 install awscli
+# install awscli but ignore colorama (which is already installed)
+pip3 install awscli --ignore-installed colorama
 aws --version
 
 # install azure-cli
