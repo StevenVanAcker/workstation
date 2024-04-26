@@ -15,6 +15,7 @@ do
 	then
 		echo "yes."
 		export RELEASE=$rel
+		break
 	else
 		echo "no."
 	fi
