@@ -81,36 +81,65 @@ cat > /usr/local/bin/remotecam.sh <<EOF
 
 host=\$1
 
-if [ "\$host" = "" ];
-then
-	echo "Usage: \$0 [<user>@]<SSH host>"
-	exit 1
-fi
-
-# v4l2loopback sometimes flakes out, so reload it by default
-# Note: no options, those are in /etc/modules, with video_nr=99
-# so that the virtual camera registers as /dev/video99
-sudo modprobe -r v4l2loopback
-sudo modprobe v4l2loopback
-
-(
-	while true;
-	do
-		if v4l2-ctl --all -d /dev/video99 | grep -q "loopback: ok";
-		then
-			ffplay /dev/video99
-		fi
-		sleep 1;
-	done
-) &
-
-ffplaypid=\$!
+keepgoing=\$(mktemp)
 function finish {
-  kill \$ffplaypid
+	rm -f \$keepgoing
 }
 trap finish EXIT
 
-ssh \$host ffmpeg -i /dev/video0 -codec copy -f matroska - | ffmpeg -i /dev/stdin -codec copy -f v4l2 /dev/video99
+if [ "\$host" = "" ];
+then
+	echo "Usage: \$0 [<user>@]<SSH host> [<num>]"
+	exit 1
+fi
+
+shift
+nums=\$@
+
+
+if [ "\$nums" = "" ];
+then
+	nums=0
+fi
+
+playcam() {
+	rnum=\$1
+	lnum=\$2
+	while [ -e \$keepgoing ];
+	do
+		if v4l2-ctl --all -d /dev/video9\$lnum | grep -q "loopback: ok";
+		then
+			ffplay /dev/video9\$lnum
+		fi
+		sleep 1;
+	done
+}
+
+streamcam() {
+	rnum=\$1
+	lnum=\$2
+	ssh \$host ffmpeg -i /dev/video\$rnum -codec copy -f matroska - | ffmpeg -i /dev/stdin -codec copy -f v4l2 /dev/video9\$lnum
+}
+
+# v4l2loopback sometimes flakes out, so reload it by default
+sudo modprobe -r v4l2loopback
+sudo modprobe v4l2loopback exclusive_caps=1 video_nr=\$(echo -n \$(seq 90 97) | tr ' ' ',') card_label="VirtualCam:VirtualCam"
+
+
+localnum=0
+for camnum in \$nums;
+do
+	echo "Starting remote cam /dev/video\$camnum on /dev/video9\$localnum"
+	playcam \$camnum \$localnum &
+	streamcam \$camnum \$localnum &
+	localnum=\$((localnum + 1))
+done
+
+while true;
+do
+	echo keep it going
+	sleep 1;
+done
 EOF
 chmod +x /usr/local/bin/remotecam.sh
 
