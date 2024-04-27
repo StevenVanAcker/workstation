@@ -30,7 +30,7 @@ PACKAGES="$PACKAGES xorriso isolinux ovmf syslinux-utils debconf-utils genisoima
 
 # other
 PACKAGES="$PACKAGES openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite3 ubuntu-restricted-addons jq transmission pv remmina \
-	software-properties-common parallel bmap-tools htop ldap-utils distro-info"
+	software-properties-common parallel bmap-tools htop ldap-utils distro-info qrencode"
 
 yes | aptdcon --hide-terminal --install="$PACKAGES"
 
