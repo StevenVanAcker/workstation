@@ -10,7 +10,7 @@ echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-s
 ubuntu-distro-info --all -f
 
 # hashicorp only supports LTS versions and we can't depend on distro-info --lts
-currentver=$(lsb_release -sd) # Ubuntu XX.XX
+currentver=$(lsb_release -sd | head -c12) # Ubuntu XX.XX, strip anything after it like minor version or "LTS"
 currentline=$(ubuntu-distro-info --all -f | grep -n "^$currentver" | cut -d: -f1)
 echo ">>> Current version in $currentver"
 echo ">>> Current line is $currentline"
