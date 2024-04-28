@@ -6,8 +6,11 @@ export MAINUSER=$(id -nu 1000)
 # accept virtualbox-ext-pack license
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
-# setup hashicorp repo
-RELEASE=$(distro-info --supported | tac|head -n 1);
+# show all ubuntu versions for debugging, in case this lists newer versions than the OS
+ubuntu-distro-into --all -f
+
+# hashicorp only supports LTS versions
+RELEASE=$(distro-info --lts);
 echo -n ">>> Checking whether hashicorp supports release $RELEASE: "
 if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
