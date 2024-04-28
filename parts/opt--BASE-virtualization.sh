@@ -7,7 +7,7 @@ export MAINUSER=$(id -nu 1000)
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
 # show all ubuntu versions for debugging, in case this lists newer versions than the OS
-ubuntu-distro-into --all -f
+ubuntu-distro-info --all -f
 
 # hashicorp only supports LTS versions
 RELEASE=$(distro-info --lts);
