@@ -7,23 +7,15 @@ export MAINUSER=$(id -nu 1000)
 echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-selections
 
 # setup hashicorp repo
-RELEASE=none
-for rel in $(distro-info --supported | tac|head -n 1);
-do
-	echo -n ">>> Checking whether hashicorp supports release $rel: "
-	if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$rel/Release;
-	then
-		echo "yes."
-		export RELEASE=$rel
-		break
-	else
-		echo "no."
-	fi
-done
-
-if [ "$RELEASE" = "none" ];
+RELEASE=$(distro-info --supported | tac|head -n 1);
+echo -n ">>> Checking whether hashicorp supports release $rel: "
+if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$rel/Release;
 then
-	echo "!!! Hashicorp is not supported on any release"
+	echo "yes."
+	export RELEASE=$rel
+	break
+else
+	echo "no."
 	false
 fi
 
