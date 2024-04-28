@@ -15,6 +15,7 @@ then
 	yes | aptdcon --hide-terminal --refresh
 else
 	echo "!!! obs-studio is not supported in Ubuntu $RELEASE"
+	false
 fi
 
 yes | aptdcon --hide-terminal --install="pavucontrol pasystray vlc kdenlive obs-studio npm"
