@@ -9,8 +9,13 @@ echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-s
 # show all ubuntu versions for debugging, in case this lists newer versions than the OS
 ubuntu-distro-info --all -f
 
-# hashicorp only supports LTS versions
-RELEASE=$(distro-info --lts);
+# hashicorp only supports LTS versions and we can't depend on distro-info --lts
+currentver=$(lsb_release -sd) # Ubuntu XX.XX
+currentline=$(ubuntu-distro-info --all -f | grep -n "^$currentver" | cut -d: -f1)
+echo ">>> Current version in $currentver"
+echo ">>> Current line is $currentline"
+RELEASE=$(ubuntu-distro-info --all -f | head -n $currentline | grep LTS | tr -d '"'| tr A-Z a-z|awk '{print $4}'| tail -1)
+
 echo -n ">>> Checking whether hashicorp supports release $RELEASE: "
 if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
