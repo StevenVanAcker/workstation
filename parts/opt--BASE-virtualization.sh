@@ -8,12 +8,10 @@ echo virtualbox-ext-pack virtualbox-ext-pack/license select true | debconf-set-s
 
 # setup hashicorp repo
 RELEASE=$(distro-info --supported | tac|head -n 1);
-echo -n ">>> Checking whether hashicorp supports release $rel: "
-if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$rel/Release;
+echo -n ">>> Checking whether hashicorp supports release $RELEASE: "
+if curl --output /dev/null --silent --head --fail https://apt.releases.hashicorp.com/dists/$RELEASE/Release;
 then
 	echo "yes."
-	export RELEASE=$rel
-	break
 else
 	echo "no."
 	false
