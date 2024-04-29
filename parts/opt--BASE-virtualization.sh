@@ -33,6 +33,14 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 yes | aptdcon --hide-terminal --refresh
 yes | aptdcon --hide-terminal --install="terraform packer"
 
+# Install OpenTofu as an alternative to terraform
+echo ">>> Installing OpenTofu"
+tmpfile=$(mktemp)
+curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o $tmpfile
+chmod +x $tmpfile
+$tmpfile --install-method deb
+rm -f $tmpfile
+
 echo ">>> Installing packages"
 PACKAGES="docker.io \
 		docker-compose \
