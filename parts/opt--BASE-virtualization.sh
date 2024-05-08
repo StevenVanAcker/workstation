@@ -103,7 +103,8 @@ then
 	echo "==> Vagrant already installed."
 else
 	echo ">>> Installing libfuse2 for vagrant"
-	yes | aptdcon --hide-terminal --install="libfuse2"
+	apt-cache search libfuse
+	yes | aptdcon --hide-terminal --install="libfuse2t64"
 	echo ">>> Installing vagrant"
 	base=https://developer.hashicorp.com/vagrant/install
 	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
