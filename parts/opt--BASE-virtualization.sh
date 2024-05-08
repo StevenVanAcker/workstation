@@ -103,8 +103,15 @@ then
 	echo "==> Vagrant already installed."
 else
 	echo ">>> Installing libfuse2 for vagrant"
-	apt-cache search libfuse
-	yes | aptdcon --hide-terminal --install="libfuse2t64"
+	release=$(lsb_release -cs)
+	if [ "$release" = "noble" ];
+	then
+		echo ">>> installing libfuse2t64"
+		yes | aptdcon --hide-terminal --install="libfuse2t64"
+	else
+		echo ">>> Installing libfuse2"
+		yes | aptdcon --hide-terminal --install="libfuse2"
+	fi
 	echo ">>> Installing vagrant"
 	base=https://developer.hashicorp.com/vagrant/install
 	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
@@ -122,8 +129,8 @@ else
 fi
 
 # test vagrant
-echo "==> Testing vagrant"
-vagrant version
+# echo "==> Testing vagrant"
+# vagrant version
 echo "==> Installing vagrant plugins"
 vagrant plugin install vagrant-host-shell
 vagrant plugin install vagrant-winrm
