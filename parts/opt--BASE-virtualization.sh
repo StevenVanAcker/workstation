@@ -159,3 +159,7 @@ fi
 # test packer
 echo "==> Testing packer"
 packer version
+
+echo "==> Installing packer plugins"
+packer plugins install github.com/hashicorp/vagrant
+packer plugins install github.com/hashicorp/virtualbox
