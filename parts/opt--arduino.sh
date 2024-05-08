@@ -6,7 +6,7 @@ boards="http://drazzy.com/package_drazzy.com_index.json http://digistump.com/pac
 
 if [ ! -e /opt/arduino ];
 then
-	yes | aptdcon --hide-terminal --install="avr-libc avrdude gcc-avr binutils-avr lynx curl"
+	yes | aptdcon --hide-terminal --install="avr-libc avrdude gcc-avr binutils-avr lynx"
 
 	tmpfile=$(mktemp --suffix .tar.xz)
 

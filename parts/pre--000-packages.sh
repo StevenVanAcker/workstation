@@ -29,7 +29,7 @@ PACKAGES="$PACKAGES inkscape gimp libreoffice"
 PACKAGES="$PACKAGES xorriso isolinux ovmf syslinux-utils debconf-utils genisoimage"
 
 # other
-PACKAGES="$PACKAGES openjdk-11-jdk gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite3 ubuntu-restricted-addons jq transmission pv remmina \
+PACKAGES="$PACKAGES openjdk-11-jdk gnupg gnupg2 apt-transport-https p7zip-full exfat-fuse graphviz binwalk sqlite3 ubuntu-restricted-addons jq transmission pv remmina \
 	software-properties-common parallel bmap-tools htop ldap-utils distro-info qrencode"
 
 yes | aptdcon --hide-terminal --install="$PACKAGES"
