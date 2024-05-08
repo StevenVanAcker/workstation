@@ -94,7 +94,32 @@ az version
 # 	vagrant plugin install vagrant-winrm
 # fi
 
+# Install vagrant
+if which vagrant;
+then
+	echo "==> Vagrant already installed."
+else
+	echo ">>> Installing vagrant"
+	base=https://developer.hashicorp.com/vagrant/install
+	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
+	tmpfile=$(mktemp --suffix .zip)
+	tmpdir=$(mktemp -d)
+	echo "==> Downloading latest vagrant to $tmpfile from $url"
+	curl -Lo $tmpfile "$url"
+	echo "==> Unpacking..."
+	cd $tmpdir
+	unzip $tmpfile
+	find $tmpdir -ls
+	mv $tmpdir/vagrant /usr/local/bin
+	cd /
+	rm -rf $tmpfile $tmpdir
+fi
 
+# test vagrant
+vagrant version
+echo "==> Installing vagrant plugins"
+vagrant plugin install vagrant-host-shell
+vagrant plugin install vagrant-winrm
 
 # Install packer
 if which packer;
