@@ -112,7 +112,7 @@ else
 	cd $tmpdir
 	unzip $tmpfile
 	find $tmpdir -ls
-	mv $tmpfile/packer /usr/local/bin
+	mv $tmpdir/packer /usr/local/bin
 	cd /
 	rm -rf $tmpfile $tmpdir
 fi
