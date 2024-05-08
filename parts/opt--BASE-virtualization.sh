@@ -42,6 +42,7 @@ $tmpfile --install-method deb
 rm -f $tmpfile
 
 # Test tofu
+echo ">>> Testing tofu"
 tofu -version
 
 echo ">>> Installing packages"
@@ -66,12 +67,14 @@ adduser $MAINUSER vboxusers
 
 # install awscli but ignore colorama (which is already installed)
 pip3 install awscli --ignore-installed colorama
+echo ">>> Testing awscli"
 aws --version
 
 # install azure-cli
 echo ">>> Installing azure-cli"
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # test azure-cli
+echo ">>> Testing azure-cli"
 az version
 
 # # Install vagrant with some extensions. Specifically, AWS integration.
@@ -99,6 +102,8 @@ if which vagrant;
 then
 	echo "==> Vagrant already installed."
 else
+	echo ">>> Installing libfuse2 for vagrant"
+	yes | aptdcon --hide-terminal --install="libfuse2"
 	echo ">>> Installing vagrant"
 	base=https://developer.hashicorp.com/vagrant/install
 	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
@@ -116,6 +121,7 @@ else
 fi
 
 # test vagrant
+echo "==> Testing vagrant"
 vagrant version
 echo "==> Installing vagrant plugins"
 vagrant plugin install vagrant-host-shell
@@ -143,4 +149,5 @@ else
 fi
 
 # test packer
+echo "==> Testing packer"
 packer version
