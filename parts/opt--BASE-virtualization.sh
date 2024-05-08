@@ -132,8 +132,8 @@ fi
 # echo "==> Testing vagrant"
 # vagrant version
 echo "==> Installing vagrant plugins"
-vagrant plugin install vagrant-host-shell
-vagrant plugin install vagrant-winrm
+vagrant plugin install vagrant-host-shell || true
+vagrant plugin install vagrant-winrm || true
 
 # Install packer
 if which packer;
