@@ -111,7 +111,8 @@ fi
 
 # test packer
 echo "==> Testing packer"
-HOME=/root packer version
+export HOME=/root/
+packer version
 
 echo "==> Installing packer plugins"
 packer plugins install github.com/hashicorp/vagrant
