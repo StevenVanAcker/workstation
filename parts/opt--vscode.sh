@@ -18,15 +18,21 @@ extensions="
 	alex079.vscode-avr-helper
 	bierner.markdown-preview-github-styles
 	cschlosser.doxdocgen
+	dsznajder.es7-react-js-snippets
 	eamodio.gitlens
 	efanzh.graphviz-preview
+	esbenp.prettier-vscode
+	github.copilot
+	github.copilot-chat
 	hashicorp.terraform
 	james-yu.latex-workshop
 	jeff-hykin.better-cpp-syntax
-	joaompinto.vscode-graphviz
 	josetr.cmake-language-support-vscode
 	ms-azuretools.vscode-docker
 	ms-dotnettools.vscode-dotnet-runtime
+	ms-python.autopep8
+	ms-python.debugpy
+	ms-python.flake8
 	ms-python.isort
 	ms-python.python
 	ms-python.vscode-pylance
@@ -45,7 +51,6 @@ extensions="
 	ms-vscode-remote.remote-ssh-edit
 	ms-vscode-remote.remote-wsl
 	redhat.java
-	tht13.html-preview-vscode
 	twxs.cmake
 	valentjn.vscode-ltex
 	visualstudioexptteam.intellicode-api-usage-examples

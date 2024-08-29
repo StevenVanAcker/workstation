@@ -19,7 +19,7 @@ PACKAGES="$PACKAGES git vim build-essential ipython3 python3-pip python3-venv gd
 
 # net tools
 PACKAGES="$PACKAGES nmap tcpdump net-tools tcptraceroute netcat-openbsd telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark wireguard whois \
-	minicom ipset dnsmasq hostapd arp-scan openssh-server"
+	minicom ipset dnsmasq hostapd arp-scan openssh-server avahi-utils"
 
 # GUI stuff
 PACKAGES="$PACKAGES inkscape gimp libreoffice"
