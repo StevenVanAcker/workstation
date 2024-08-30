@@ -13,6 +13,7 @@ yes | aptdcon --hide-terminal --refresh
 yes | aptdcon --hide-terminal --full-upgrade
 
 # install bitwarden
+yes | aptdcon --hide-terminal --install="curl"
 export RELEASE=$(lsb_release -rs)
 
 if [ "$RELEASE" = "22.04" ];
