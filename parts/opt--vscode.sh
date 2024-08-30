@@ -18,19 +18,18 @@ extensions="
 	alex079.vscode-avr-helper
 	bierner.markdown-preview-github-styles
 	cschlosser.doxdocgen
-	dsznajder.es7-react-js-snippets
 	eamodio.gitlens
 	efanzh.graphviz-preview
-	esbenp.prettier-vscode
 	github.copilot
 	github.copilot-chat
 	hashicorp.terraform
 	james-yu.latex-workshop
 	jeff-hykin.better-cpp-syntax
+	joaompinto.vscode-graphviz
 	josetr.cmake-language-support-vscode
 	ms-azuretools.vscode-docker
 	ms-dotnettools.vscode-dotnet-runtime
-	ms-python.autopep8
+	ms-python.black-formatter
 	ms-python.debugpy
 	ms-python.flake8
 	ms-python.isort
@@ -41,20 +40,22 @@ extensions="
 	ms-toolsai.jupyter-renderers
 	ms-toolsai.vscode-jupyter-cell-tags
 	ms-toolsai.vscode-jupyter-slideshow
-	ms-vscode.cmake-tools
-	ms-vscode.cpptools
-	ms-vscode.cpptools-extension-pack
-	ms-vscode.cpptools-themes
-	ms-vscode.remote-explorer
 	ms-vscode-remote.remote-containers
 	ms-vscode-remote.remote-ssh
 	ms-vscode-remote.remote-ssh-edit
 	ms-vscode-remote.remote-wsl
+	ms-vscode.cmake-tools
+	ms-vscode.cpptools
+	ms-vscode.cpptools-extension-pack
+	ms-vscode.cpptools-themes
+	ms-vscode.makefile-tools
+	ms-vscode.remote-explorer
 	redhat.java
 	twxs.cmake
 	valentjn.vscode-ltex
 	visualstudioexptteam.intellicode-api-usage-examples
 	visualstudioexptteam.vscodeintellicode
+	vscjava.vscode-gradle
 	vscjava.vscode-java-debug
 	vscjava.vscode-java-dependency
 	vscjava.vscode-java-pack
