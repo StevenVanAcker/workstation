@@ -39,7 +39,11 @@ yes | aptdcon --hide-terminal --install="$PACKAGES"
 
 echo ">>> Docker: removing old packages"
 PACKAGES="docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc"
-yes | aptdcon --hide-terminal --purge="$PACKAGES"
+for p in $PACKAGES;
+do
+	echo ">>> Docker: uninstalled $p, which may not be installed"
+	yes | aptdcon --hide-terminal --purge="$p" || true
+done
 
 echo ">>> Docker: adding apt key"
 install -m 0755 -d /etc/apt/keyrings
