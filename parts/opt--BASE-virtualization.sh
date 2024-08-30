@@ -19,9 +19,7 @@ echo ">>> Testing tofu"
 tofu -version
 
 echo ">>> Installing packages"
-PACKAGES="docker.io \
-		docker-compose \
-		dosbox \
+PACKAGES="dosbox \
 		qemu-user-static \
 		qemu-system \
 		gdb-avr \
@@ -30,8 +28,36 @@ PACKAGES="docker.io \
 		virtualbox-ext-pack \
 		ansible \
 		libvirt-daemon-system \
-		wine"
+		wine \
+		ca-certificates \
+		curl"
 
+yes | aptdcon --hide-terminal --install="$PACKAGES"
+
+### Docker
+# according to https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+echo ">>> Docker: removing old packages"
+PACKAGES="docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc"
+yes | aptdcon --hide-terminal --purge="$PACKAGES"
+
+echo ">>> Docker: adding apt key"
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo ">>> Docker: adding apt sources"
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+echo ">>> Docker: refresh repos"
+yes | aptdcon --hide-terminal --refresh
+
+echo ">>> Docker: installing new packages"
+PACKAGES="docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
 yes | aptdcon --hide-terminal --install="$PACKAGES"
 
 # for USB access
