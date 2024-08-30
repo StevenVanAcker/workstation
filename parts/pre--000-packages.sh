@@ -12,6 +12,21 @@ echo ">>> Performing upgrade"
 yes | aptdcon --hide-terminal --refresh
 yes | aptdcon --hide-terminal --full-upgrade
 
+# install bitwarden
+export RELEASE=$(lsb_release -rs)
+
+if [ "$RELEASE" = "22.04" ];
+then
+	echo """# Ubuntu $RELEASE detected, installing upstream nodejs"
+	curl -fsSL https://deb.nodesource.com/setup_21.x | bash -e
+	yes | aptdcon --hide-terminal --install="nodejs"
+else
+	echo """# Ubuntu $RELEASE detected, installing npm via apt"
+	yes | aptdcon --hide-terminal --install="npm"
+fi
+
+npm install -g @bitwarden/cli
+
 PACKAGES=""
 # devel tools
 PACKAGES="$PACKAGES git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386 linux-libc-dev:i386 cargo \
@@ -33,21 +48,6 @@ PACKAGES="$PACKAGES openjdk-11-jdk gnupg gnupg2 apt-transport-https p7zip-full e
 	software-properties-common parallel bmap-tools htop ldap-utils distro-info qrencode"
 
 yes | aptdcon --hide-terminal --install="$PACKAGES"
-
-# install bitwarden
-export RELEASE=$(lsb_release -rs)
-
-if [ "$RELEASE" = "22.04" ];
-then
-	echo """# Ubuntu $RELEASE detected, installing upstream nodejs"
-	curl -fsSL https://deb.nodesource.com/setup_21.x | bash -e
-	yes | aptdcon --hide-terminal --install="nodejs"
-else
-	echo """# Ubuntu $RELEASE detected, installing npm via apt"
-	yes | aptdcon --hide-terminal --install="npm"
-fi
-
-npm install -g @bitwarden/cli
 
 
 ####################
