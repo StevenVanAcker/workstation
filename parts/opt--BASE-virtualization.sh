@@ -111,6 +111,7 @@ fi
 
 # test packer
 echo "==> Testing packer"
+export HOME=/root/
 packer version
 
 echo "==> Installing packer plugins"
