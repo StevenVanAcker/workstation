@@ -18,8 +18,11 @@ extensions="
 	alex079.vscode-avr-helper
 	bierner.markdown-preview-github-styles
 	cschlosser.doxdocgen
+	dbaeumer.vscode-eslint
+	dsznajder.es7-react-js-snippets
 	eamodio.gitlens
 	efanzh.graphviz-preview
+	esbenp.prettier-vscode
 	github.copilot
 	github.copilot-chat
 	hashicorp.terraform
@@ -30,6 +33,7 @@ extensions="
 	ms-azuretools.vscode-docker
 	ms-dotnettools.vscode-dotnet-runtime
 	ms-python.black-formatter
+	ms-python.autopep8
 	ms-python.debugpy
 	ms-python.flake8
 	ms-python.isort
@@ -40,16 +44,16 @@ extensions="
 	ms-toolsai.jupyter-renderers
 	ms-toolsai.vscode-jupyter-cell-tags
 	ms-toolsai.vscode-jupyter-slideshow
-	ms-vscode-remote.remote-containers
-	ms-vscode-remote.remote-ssh
-	ms-vscode-remote.remote-ssh-edit
-	ms-vscode-remote.remote-wsl
 	ms-vscode.cmake-tools
 	ms-vscode.cpptools
 	ms-vscode.cpptools-extension-pack
 	ms-vscode.cpptools-themes
 	ms-vscode.makefile-tools
 	ms-vscode.remote-explorer
+	ms-vscode-remote.remote-containers
+	ms-vscode-remote.remote-ssh
+	ms-vscode-remote.remote-ssh-edit
+	ms-vscode-remote.remote-wsl
 	redhat.java
 	twxs.cmake
 	valentjn.vscode-ltex
