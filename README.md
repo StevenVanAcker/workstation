@@ -1,3 +1,5 @@
+![Unit Tests](https://github.com/StevenVanAcker/workstation/actions/workflows/cron-build.yml/badge.svg)
+
 # Workstation installation setup
 
 Install a workstation from scratch by executing entry.sh.
