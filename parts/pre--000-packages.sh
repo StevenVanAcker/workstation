@@ -31,7 +31,7 @@ npm install -g @bitwarden/cli
 PACKAGES=""
 # devel tools
 PACKAGES="$PACKAGES git vim build-essential ipython3 python3-pip python3-venv gdb-multiarch mdm nasm cmake gcc-multilib libseccomp2:i386 linux-libc-dev:i386 cargo \
-	python3-flake8 python3-autopep8 python3-websocket unzip"
+	python3-flake8 python3-autopep8 python3-websocket unzip python-dev-is-python3"
 
 # net tools
 PACKAGES="$PACKAGES nmap tcpdump net-tools tcptraceroute netcat-openbsd telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark wireguard whois \
