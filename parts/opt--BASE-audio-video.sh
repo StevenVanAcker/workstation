@@ -20,7 +20,8 @@ fi
 
 yes | aptdcon --hide-terminal --install="pavucontrol pasystray vlc kdenlive obs-studio npm"
 
-
+if false;
+then
 # Build pagraphcontrol
 # Hint: right click in pagraphcontrol to create a loopback, which will forward its input to its output
 npm install -g yarn
@@ -60,6 +61,7 @@ update-sink-proplist VirtualSink device.description=VirtualSink
 
 EOF
 chown -R $MAINUSER: /home/$MAINUSER/.config
+fi
 
 # add virtual webcam
 yes | aptdcon --hide-terminal --install="v4l-utils ffmpeg v4l2loopback-dkms v4l2loopback-utils"
