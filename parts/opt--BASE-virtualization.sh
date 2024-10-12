@@ -22,6 +22,7 @@ echo ">>> Installing packages"
 PACKAGES="dosbox \
 		qemu-user-static \
 		qemu-system \
+		qemu-utils \
 		gdb-avr \
 		virtualbox \
 		virtualbox-qt \
