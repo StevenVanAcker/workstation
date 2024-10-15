@@ -4,6 +4,7 @@
 
 export MAINUSER=$(id -nu 1000)
 
+yes | aptdcon --hide-terminal --install="openjdk-17-jdk"
 
 if [ -e /opt/ghidra ];
 then
