@@ -4,7 +4,7 @@
 # for at least Dell D6000 docking station "DisplayLink Dell Universal Dock D6000"
 
 # bypass the silly .deb from https://www.synaptics.com/sites/default/files/Ubuntu/pool/stable/main/all/synaptics-repository-keyring.deb
-kdir -p /etc/apt/sources.list.d/ 
+mkdir -p /etc/apt/sources.list.d/ 
 cat > /etc/apt/sources.list.d/synaptics.list <<EOF
 deb [signed-by=/usr/share/keyrings/synaptics-repository-keyring.gpg] https://www.synaptics.com/sites/default/files/Ubuntu stable main
 deb [signed-by=/usr/share/keyrings/synaptics-repository-keyring.gpg] https://www.synaptics.com/sites/default/files/Ubuntu stable non-free
