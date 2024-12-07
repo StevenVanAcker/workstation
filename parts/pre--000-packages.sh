@@ -12,7 +12,7 @@ echo ">>> Performing refresh"
 yes | aptdcon --hide-terminal --refresh
 
 echo ">>> Installing rbw"
-yes | aptdcon --hide-terminal --install="curl jq pinentry"
+yes | aptdcon --hide-terminal --install="curl jq pinentry-curses"
 RBWVER=$(curl -s https://api.github.com/repos/doy/rbw/releases | jq '.[0].tag_name' --raw-output)
 echo ">>> Found rbw version $RBWVER"
 curl -o /rbw.deb "https://git.tozt.net/rbw/releases/deb/rbw_${RBWVER}_amd64.deb"
