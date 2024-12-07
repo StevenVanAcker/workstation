@@ -8,12 +8,25 @@ dpkg --add-architecture i386
 echo ">>> Enabling source repos"
 sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
 
-echo ">>> Performing upgrade"
+echo ">>> Performing refresh"
 yes | aptdcon --hide-terminal --refresh
+
+echo ">>> Installing rbw"
+yes | aptdcon --hide-terminal --install="curl jq"
+RBWVER=$(curl -s https://api.github.com/repos/doy/rbw/releases | jq '.[0].tag_name' --raw-output)
+echo ">>> Found rbw version $RBWVER"
+curl -o rbw.deb "https://git.tozt.net/rbw/releases/deb/rbw_${RBWVER}_amd64.deb"
+dpkg -i rbw.deb
+rm -f rbw.deb
+
+echo ">>> Checking whether rbw works"
+rbw --version
+
+echo ">>> Performing upgrade"
 yes | aptdcon --hide-terminal --full-upgrade
 
-# install bitwarden
-yes | aptdcon --hide-terminal --install="curl"
+# install bitwarden and rbw
+yes | aptdcon --hide-terminal --install="curl jq"
 export RELEASE=$(lsb_release -rs)
 
 if [ "$RELEASE" = "22.04" ];
