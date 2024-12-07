@@ -22,8 +22,6 @@ yes | aptdcon --hide-terminal --refresh
 ### echo ">>> Checking whether rbw works"
 ### rbw --version
 
-echo ">>> Performing upgrade"
-yes | aptdcon --hide-terminal --full-upgrade
 
 # install bitwarden
 yes | aptdcon --hide-terminal --install="curl jq"
@@ -40,6 +38,9 @@ else
 fi
 
 npm install -g @bitwarden/cli
+
+echo ">>> Performing upgrade"
+yes | aptdcon --hide-terminal --full-upgrade
 
 PACKAGES=""
 # devel tools
