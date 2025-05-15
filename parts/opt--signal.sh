@@ -9,7 +9,7 @@ curl -L https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > $tf
 install -o root -g root -m 644 $tf /etc/apt/trusted.gpg.d/signal-desktop-keyring.gpg
 rm -f $tf
 
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' > /etc/apt/sources.list.d/signal.list
+echo 'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' > /etc/apt/sources.list.d/signal.list
 
 
 yes | aptdcon --hide-terminal --refresh
