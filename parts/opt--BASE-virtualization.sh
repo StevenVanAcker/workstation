@@ -98,7 +98,7 @@ else
 		yes | aptdcon --hide-terminal --install="libfuse2"
 	fi
 	echo ">>> Installing vagrant"
-	# Vagrant is blocking based on user-agent string
+	# Hashicorp is blocking based on user-agent
 	# base=https://developer.hashicorp.com/vagrant/install
 	# url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
 	url=https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_linux_amd64.zip
@@ -128,8 +128,10 @@ then
 	echo "==> Packer already installed."
 else 
 	echo ">>> Installing packer"
-	base=https://developer.hashicorp.com/packer/install
-	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
+	# Hashicorp is blocking based on user-agent
+	# base=https://developer.hashicorp.com/packer/install
+	# url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
+	url=https://releases.hashicorp.com/packer/1.14.2/packer_1.14.2_linux_amd64.zip
 	tmpfile=$(mktemp --suffix .zip)
 	tmpdir=$(mktemp -d)
 	echo "==> Downloading latest packer to $tmpfile from $url"
