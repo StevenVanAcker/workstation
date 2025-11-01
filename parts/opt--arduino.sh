@@ -1,6 +1,8 @@
 #!/bin/sh -e
 # DESCRIPTION: Arduino IDE and CLI
 
+exit 0
+
 base="https://www.arduino.cc/en/software/"
 boards="http://drazzy.com/package_drazzy.com_index.json http://digistump.com/package_digistump_index.json"
 
