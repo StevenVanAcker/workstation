@@ -27,10 +27,10 @@ yes | aptdcon --hide-terminal --refresh
 yes | aptdcon --hide-terminal --install="curl jq"
 export RELEASE=$(lsb_release -rs)
 
-if [ "$RELEASE" = "22.04" ];
+if [ "$RELEASE" != "99.99" ];
 then
 	echo """# Ubuntu $RELEASE detected, installing upstream nodejs"
-	curl -fsSL https://deb.nodesource.com/setup_21.x | bash -e
+	curl -fsSL https://deb.nodesource.com/setup_24.x | bash -e
 	yes | aptdcon --hide-terminal --install="nodejs"
 else
 	echo """# Ubuntu $RELEASE detected, installing npm via apt"
