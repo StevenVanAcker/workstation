@@ -98,8 +98,10 @@ else
 		yes | aptdcon --hide-terminal --install="libfuse2"
 	fi
 	echo ">>> Installing vagrant"
-	base=https://developer.hashicorp.com/vagrant/install
-	url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
+	# Vagrant is blocking based on user-agent string
+	# base=https://developer.hashicorp.com/vagrant/install
+	# url=$(lynx -dump "$base" | grep -oP "https?://.*linux_amd64.zip$")
+	url=https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_linux_amd64.zip
 	tmpfile=$(mktemp --suffix .zip)
 	tmpdir=$(mktemp -d)
 	echo "==> Downloading latest vagrant to $tmpfile from $url"
