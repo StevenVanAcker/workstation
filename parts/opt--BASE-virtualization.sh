@@ -31,6 +31,7 @@ PACKAGES="dosbox \
 		libvirt-daemon-system \
 		wine \
 		ca-certificates \
+		lynx \
 		curl"
 
 yes | aptdcon --hide-terminal --install="$PACKAGES"
