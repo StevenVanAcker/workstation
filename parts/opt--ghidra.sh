@@ -45,7 +45,7 @@ EOF
 
 rm -f $tmpfile
 
-echo "export PATH=\"/opt/ghidra/:\$PATH\"" >> /etc/bash.bashrc
+echo "export PATH=\"\$PATH:/opt/ghidra/\"" >> /etc/bash.bashrc
 
 cat > /usr/share/applications/ghidra.desktop <<EOF
 [Desktop Entry]
