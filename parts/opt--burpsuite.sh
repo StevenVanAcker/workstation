@@ -5,6 +5,8 @@
 if [ -e /opt/burpsuite ];
 then
 	# already installed
+	echo "==> Burp Suite already installed, skipping."
+	echo "==> To reinstall, please remove /opt/burpsuite first."
 	exit 0
 fi
 
