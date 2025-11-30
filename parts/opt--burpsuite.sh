@@ -2,7 +2,13 @@
 
 # DESCRIPTION: Burp Suite Proxy installation script
 
-tmpfile=$(mktemp /tmp/burpsuite-installer.XXXXXX.sh)
+if [ -e /opt/burpsuite ];
+then
+	# already installed
+	exit 0
+fi
+
+tmpfile=$(mktemp /tmp/burpsuite-installer.XXXXXX.jar)
 
 # if this script exits for whatever reason, clean up the temp file
 trap "rm -f $tmpfile" EXIT
@@ -16,15 +22,22 @@ latest=$(echo $latest_path | sed 's:.*professional-community-::' | tr "-" ".")
 echo "==> Latest Burp Suite version is $latest"
 
 # Now compose the magic download string
-download_url="https://portswigger.net/burp/releases/download?product=pro&version=$latest&type=Linux"
+download_url="https://portswigger.net/burp/releases/download?product=pro&version=$latest&type=Jar"
 
 echo "==> Downloading from $download_url to $tmpfile"
 curl -L $download_url -o $tmpfile
-chmod 0755 $tmpfile
 
 s=$(sha256sum $tmpfile | awk '{print $1}')
 echo "==> Downloaded file SHA256: $s"
 
-export MAINUSER=$(id -nu 1000)
-echo "==> Installing Burp Suite as user $MAINUSER"
-sudo -u $MAINUSER $tmpfile
+mkdir -p /opt/burpsuite
+mv $tmpfile /opt/burpsuite/burpsuite.jar
+chmod 755 /opt/burpsuite/burpsuite.jar
+
+cat > /usr/share/applications/burpsuite.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Name=Burp Suite Pro
+Exec=java -jar /opt/burpsuite/burpsuite.jar
+Terminal=false
+EOF
