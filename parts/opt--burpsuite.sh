@@ -23,7 +23,7 @@ download_url=$BASEURL$(echo $download_path | sed 's/href=//g')
 
 echo "==> Downloading from $download_url to $tmpfile"
 curl -L $download_url -o $tmpfile
-chmod +x $tmpfile
+chmod 0755 $tmpfile
 
 export MAINUSER=$(id -nu 1000)
 echo "==> Installing Burp Suite as user $MAINUSER"
