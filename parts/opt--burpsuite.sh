@@ -40,6 +40,11 @@ cat > /usr/share/applications/burpsuite.desktop <<EOF
 [Desktop Entry]
 Type=Application
 Name=Burp Suite Pro
+Icon=/opt/burpsuite/BurpSuitePro.png
 Exec=java -jar /opt/burpsuite/burpsuite.jar
 Terminal=false
 EOF
+
+HERE=$(dirname $(readlink -f $0))
+cp $HERE/../files/BurpSuitePro.png /opt/burpsuite/BurpSuitePro.png
+echo "==> Burp Suite installation completed."
