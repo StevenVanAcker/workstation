@@ -41,7 +41,7 @@ cat > /usr/share/applications/burpsuite.desktop <<EOF
 Type=Application
 Name=Burp Suite Pro
 Icon=/opt/burpsuite/BurpSuitePro.png
-Exec=java -jar /opt/burpsuite/burpsuite.jar
+Exec=java -jar -Xmx8G -Xms8G /opt/burpsuite/burpsuite.jar
 Terminal=false
 EOF
 
