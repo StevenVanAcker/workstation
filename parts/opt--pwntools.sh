@@ -3,7 +3,7 @@
 # DESCRIPTION: Gallopsled's pwntools python library
 
 # pre-requisites
-yes | aptdcon --hide-terminal --install="binutils-arm-linux-gnueabi python3 python3-pip"
+yes | aptdcon --hide-terminal --install="binutils-arm-linux-gnueabi python3 python3-pip pkg-config"
 
 # Install pwntools
 pip3 install pwn
