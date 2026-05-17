@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 apt-get update
-apt-get install -y curl sudo aptdaemon
+apt-get install -y curl sudo aptdaemon adduser
 
 # default user
 if id -u 1000; then 
