@@ -89,14 +89,8 @@ then
 else
 	echo ">>> Installing libfuse2 for vagrant"
 	release=$(lsb_release -cs)
-	if [ "$release" = "noble" ];
-	then
-		echo ">>> installing libfuse2t64"
-		yes | aptdcon --hide-terminal --install="libfuse2t64"
-	else
-		echo ">>> Installing libfuse2"
-		yes | aptdcon --hide-terminal --install="libfuse2"
-	fi
+	echo ">>> installing libfuse2t64"
+	yes | aptdcon --hide-terminal --install="libfuse2t64"
 	echo ">>> Installing vagrant"
 	# Hashicorp is blocking based on user-agent
 	# base=https://developer.hashicorp.com/vagrant/install
