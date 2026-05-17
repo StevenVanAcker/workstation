@@ -7,7 +7,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-            ubuntuversion: ["22.04", "24.04"]
+            ubuntuversion: ["24.04", "26.04"]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4

@@ -4,7 +4,7 @@
 
 export MAINUSER=$(id -nu 1000)
 
-yes | aptdcon --hide-terminal --install="openjdk-21-jdk"
+yes | aptdcon --hide-terminal --install="openjdk-21-jdk unzip"
 
 if [ -e /opt/ghidra ];
 then

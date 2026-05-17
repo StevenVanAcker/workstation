@@ -11,18 +11,6 @@ sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
 echo ">>> Performing refresh"
 yes | aptdcon --hide-terminal --refresh
 
-### echo ">>> Installing rbw"
-### yes | aptdcon --hide-terminal --install="curl jq pinentry-curses"
-### RBWVER=$(curl -s https://api.github.com/repos/doy/rbw/releases | jq '.[0].tag_name' --raw-output)
-### echo ">>> Found rbw version $RBWVER"
-### curl -o /rbw.deb "https://git.tozt.net/rbw/releases/deb/rbw_${RBWVER}_amd64.deb"
-### dpkg -i /rbw.deb
-### rm -f /rbw.deb
-###
-### echo ">>> Checking whether rbw works"
-### rbw --version
-
-
 # install bitwarden
 yes | aptdcon --hide-terminal --install="curl jq"
 export RELEASE=$(lsb_release -rs)
@@ -48,7 +36,7 @@ PACKAGES="$PACKAGES git vim build-essential ipython3 python3-pip python3-venv gd
 	python3-flake8 python3-autopep8 python3-websocket unzip python-dev-is-python3"
 
 # net tools
-PACKAGES="$PACKAGES nmap tcpdump net-tools tcptraceroute netcat-openbsd telnet tcptrace curl python3-scapy traceroute hping3 lynx wireshark tshark wireguard whois \
+PACKAGES="$PACKAGES nmap tcpdump net-tools tcptraceroute netcat-openbsd telnet curl python3-scapy traceroute hping3 lynx wireshark tshark wireguard whois \
 	minicom ipset dnsmasq hostapd arp-scan openssh-server avahi-utils"
 
 # GUI stuff

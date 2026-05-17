@@ -20,7 +20,7 @@ tofu -version
 
 echo ">>> Installing packages"
 PACKAGES="dosbox \
-		qemu-user-static \
+		qemu-user \
 		qemu-system \
 		qemu-utils \
 		gdb-avr \
