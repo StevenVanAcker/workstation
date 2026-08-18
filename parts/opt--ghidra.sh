@@ -24,6 +24,8 @@ cd /opt
 unzip $tmpfile
 ln -s ghidra_* ghidra
 chown -R $MAINUSER: ghidra*
+
+if false; then
 patch /opt/ghidra/Ghidra/Processors/V850/data/languages/Instructions/Special.sinc <<EOF
 --- Special.sinc	2023-11-28 15:18:11.082571251 +0100
 +++ Special-patched.sinc	2023-11-28 15:17:37.502949826 +0100
@@ -42,6 +44,7 @@ patch /opt/ghidra/Ghidra/Processors/V850/data/languages/Instructions/Special.sin
  :jmp [R0004] is op0515=0x03 & R0004 & op0004=0x1F
  {
 EOF
+fi
 
 rm -f $tmpfile
 
