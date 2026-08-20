@@ -2,6 +2,9 @@
 
 # DESCRIPTION: Obsidian, the markdown-based knowledge base app, plus Syncthing for vault sync
 
+export MAINUSER=$(id -nu 1000)
+export MAINHOME=$(getent passwd $MAINUSER | cut -d: -f 6)
+
 if dpkg -s obsidian > /dev/null 2>&1;
 then
 	echo "==> Obsidian already installed."
@@ -40,3 +43,11 @@ dpkg -s syncthing > /dev/null 2>&1 || { echo "==> syncthing installation failed,
 dpkg -s syncthingtray > /dev/null 2>&1 || { echo "==> syncthingtray installation failed, dpkg does not report it as installed." 1>&2; exit 1; }
 
 echo "==> Syncthing $(dpkg-query -W -f='${Version}' syncthing) and syncthingtray $(dpkg-query -W -f='${Version}' syncthingtray) installed successfully."
+
+echo "==> Enabling and starting syncthing service for $MAINUSER"
+systemctl enable --now "syncthing@$MAINUSER.service" || echo "Failed but that's ok..."
+
+echo "==> Setting up syncthingtray to autostart on login for $MAINUSER"
+mkdir -p $MAINHOME/.config/autostart
+cp /usr/share/applications/syncthingtray.desktop $MAINHOME/.config/autostart/syncthingtray.desktop
+chown -R $MAINUSER: $MAINHOME/.config/autostart
